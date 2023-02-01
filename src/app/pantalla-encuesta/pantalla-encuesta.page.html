@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="padding-inline: 0px">
+      <img src="../../assets/icon/bitmap.svg" height="50px" width="50px" />
+      Encuesta de Atributos de Egreso
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    En esta página podrá llenar una encuesta para llenar su satisfación con los
+    atributos de egreso de los alumnos del ITTEPIC
+  </ion-item>
+  <ion-accordion-group>
+    <ion-accordion
+      value="first"
+      toggleIcon="caret-down-sharp"
+      toggleIconSlot="end"
+    >
+      <ion-item slot="header" class="accordionHeader">
+        <ion-label>Lista de Atributos de Egreso (ISC)</ion-label>
+      </ion-item>
+      <ion-item slot="content">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let at of atributosISC">
+            <ion-icon name="ellipse"></ion-icon>
+            <ion-label class="ion-text-wrap">&nbsp;{{at}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+    </ion-accordion>
+    <ion-accordion
+      value="second"
+      toggleIcon="caret-down-sharp"
+      toggleIconSlot="end"
+    >
+      <ion-item slot="header" class="accordionHeader">
+        <ion-label>Objetivos Educacionales (ISC)</ion-label>
+      </ion-item>
+      <ion-item slot="content">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let ob of objetivosISC">
+            <ion-icon name="ellipse"></ion-icon>
+            <ion-label class="ion-text-wrap">&nbsp;{{ob}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+    </ion-accordion>
+  </ion-accordion-group>
+  <ion-item-divider></ion-item-divider>
+  <ion-item> Encuesta </ion-item>
+</ion-content>

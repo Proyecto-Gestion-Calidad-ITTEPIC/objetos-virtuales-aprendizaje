@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="padding-inline: 0px">
+      <img src="../../assets/icon/bitmap.svg" height="50px" width="50px" />
+      Objetos Virtuales de Aprendizaje
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label
+      >Esta pantalla contiene una lista de los objetos virtuales para su uso en
+      MOODLE
+    </ion-label>
+  </ion-item>
+  <ion-searchbar
+    [debounce]="1000"
+    (ionChange)="filtrar($event)"
+    show-clear-button="focus"
+    animated="true"
+    placeholder="Buscar una materia"
+  ></ion-searchbar>
+  <ion-list lines="inset" inset="true" *ngIf="results">
+    <ion-item *ngFor="let result of results">
+      <ion-label>
+        <ion-icon name="star" slot="start" *ngIf="result.codigo"></ion-icon>
+        {{ result.nombre }}
+      </ion-label>
+      <div *ngIf="result.archivo">
+        <a href="{{result.archivo}}">
+          <ion-icon name="cloud-download-outline" size="large"></ion-icon>
+        </a>
+      </div>
+
+    </ion-item>
+  </ion-list>
+  <ion-accordion-group expand="inset">
+    <ion-accordion
+      value="first"
+      toggleIcon="caret-down-sharp"
+      toggleIconSlot="end"
+    >
+      <ion-item slot="header" class="accordionHeader">
+        <ion-label>Lista de Materias</ion-label>
+      </ion-item>
+      <ion-item lines="inset" slot="content" *ngFor="let item of materias">
+        <ion-label>
+          <ion-icon name="star" slot="start" *ngIf="item.codigo"></ion-icon>
+          {{item.nombre}}
+        </ion-label>
+        <div *ngIf="item.archivo">
+          <a href="{{item.archivo}}">
+            <ion-icon name="cloud-download-outline" size="large"></ion-icon>
+          </a>
+        </div>
+      </ion-item>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>

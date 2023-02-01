@@ -25,3 +25,13 @@
 #container a {
   text-decoration: none;
 }
+ion-button{
+  --background:#064597;
+  --background-activated:#3a7ed7;
+  --background-hover:#0ac2fa;
+  --background-hover-opacity:.75;
+  ion-item{
+    --background: none;
+    color:#FFF;
+  }
+}
