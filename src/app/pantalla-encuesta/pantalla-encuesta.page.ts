@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pantalla-encuesta.page.scss'],
 })
 export class PantallaEncuestaPage implements OnInit {
+  public atributo_0: number = 0
+  public atributo_1: number = 0
+  public atributo_2: number = 0
+  public atributo_3: number = 0
+  public atributo_4: number = 0
+  public atributo_5: number = 0
+  public atributo_6: number = 0
+  public atributo_7: number = 0
+  public atributo_8: number = 0
+  public objetivo_0: number = 0
+  public objetivo_1: number = 0
+  public objetivo_2: number = 0
+  public objetivo_3: number = 0
+  public objetivo_4: number = 0
+  public objetivo_5: number = 0
+  public formAtributos : FormGroup;
+  
   public atributosISC=[
     'Implementa aplicaciones computacionales para solucionar problemas de diversos contextos, integrando diferentes tecnologías, plataformas o dispositivos.',
     'Diseña, desarrolla y aplica modelos computacionales para solucionar problemas, mediante la selección y uso de herramientas matemáticas.',
@@ -26,9 +44,24 @@ export class PantallaEncuestaPage implements OnInit {
     'El egresado promueve su capacitación constante para la aplicación del conocimiento adquirido en el ámbito laboral.'
   ]
 
-  constructor() { }
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
+    this.formAtributos = this.fb.group({
+      atributo_0:[0],
+      atributo_1:[0],
+      atributo_2:[0],
+      atributo_3:[0],
+      atributo_4:[0],
+      atributo_5:[0],
+      atributo_6:[0],
+      atributo_7:[0],
+      atributo_8:[0]
+    });
+  }
+
+  public sliderChange(val:number){
+
   }
 
 }

@@ -10,7 +10,17 @@ import { FireAuthService } from '../services/fire-auth.service';
 export class HomePage implements OnInit {
   public loginForm: FormGroup;
   public valMessage: Object;
-  constructor(private router : Router, private fb: FormBuilder, private auth: FireAuthService) {}
+  public loggedUser;
+  constructor(private router : Router, private fb: FormBuilder, private auth: FireAuthService) {
+    this.auth.getCurrentUser().subscribe(res => {
+      /*if (res !== null){
+        console.log(res)
+      }else console.log('No user')
+      */
+      this.loggedUser=res;
+    })
+    
+  }
 
   ngOnInit(): void {
    
@@ -50,11 +60,7 @@ export class HomePage implements OnInit {
     }
   }
   public obtenerUsuario(){
-    this.auth.getCurrentUser().subscribe(res => {
-      if (res !== null){
-        console.log(res)
-      }else console.log('No user')
-    })
+    console.log(this.loggedUser)
     
   }
   public salir(){
