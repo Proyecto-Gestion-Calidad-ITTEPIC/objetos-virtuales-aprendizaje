@@ -65,3 +65,11 @@ ion-toolbar {
     background: unset;
 }  
   }
+  ion-accordion-group{
+    ion-accordion {
+        .ion-accordion-toggle-icon {
+            font-size: 25px;
+            color: #002e6b;
+        }
+    }
+}

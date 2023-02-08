@@ -51,20 +51,18 @@
       </ion-item>
     </ion-accordion>
   </ion-accordion-group>
-  <ion-item-divider></ion-item-divider>
   <ion-item> Encuesta </ion-item>
 
   <form [formGroup]="formAtributos">
+    <ion-grid>
     <ion-row *ngFor="let at of atributosISC; let i = index ">
       <ion-col>
         <ion-item>
           <ion-label class="ion-text-wrap">
-            <h1>Atributo {{i}}</h1>
+            <h2>Atributo {{i}}</h2>
             <p>{{at}}</p>
           </ion-label>
-        </ion-item>
-        <ion-col>
-          <ion-range
+        </ion-item>          <ion-range
             formControlName="atributo_{{i}}"
             [pin]="true"
             [ticks]="true"
@@ -74,9 +72,15 @@
             step="1"
             name="atributo_{{i}}"
             (ionChange)="sliderChange(i)"
-          ></ion-range>
+          >
+          <ion-icon name="sad" slot="start" ></ion-icon>
+          <ion-icon name="happy" slot="end"></ion-icon>
+        </ion-range>
+
+        <ion-col>
         </ion-col>
       </ion-col>
     </ion-row>
+  </ion-grid>
   </form>
 </ion-content>
