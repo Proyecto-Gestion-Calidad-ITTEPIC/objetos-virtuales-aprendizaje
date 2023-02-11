@@ -1,5 +1,8 @@
+import { Encuesta } from './../models/encuesta';
+import { EncuestaService } from './../services/encuesta.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pantalla-encuesta',
@@ -23,6 +26,7 @@ export class PantallaEncuestaPage implements OnInit {
   public objetivo_4: number = 0
   public objetivo_5: number = 0
   public formAtributos : FormGroup;
+  public encuestaP: Encuesta
   
   public atributosISC=[
     'Implementa aplicaciones computacionales para solucionar problemas de diversos contextos, integrando diferentes tecnologías, plataformas o dispositivos.',
@@ -44,7 +48,7 @@ export class PantallaEncuestaPage implements OnInit {
     'El egresado promueve su capacitación constante para la aplicación del conocimiento adquirido en el ámbito laboral.'
   ]
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService) { }
 
   ngOnInit() {
     this.formAtributos = this.fb.group({
@@ -62,6 +66,72 @@ export class PantallaEncuestaPage implements OnInit {
 
   public sliderChange(val:number){
 
+  }
+  public formAtrCheck(){
+    //console.log(this.formAtributos.valid)
+    //console.log(this.formAtributos.get('atributo_0').value)
+    if (this.formAtributos.valid) {
+      this.presentAlertModal('¿Desea enviar el formulario de satisfacción de Atributos de egreso? \n Revise sus respuestas','Atributos')
+    }
+  }
+  async presentAlertModal(m: string, t: string) {
+    const alert = await this.alertController.create({
+      header: 'ALERTA',
+      subHeader: 'Aviso: ',
+      message: m,
+      cssClass: 'encuestaModal',
+      buttons: [{
+        text:'CONFIRMAR',
+        role:'confirm',
+        handler: () => {
+          console.log('confirmado')
+          this.subirEncuesta(t)
+        }
+      }
+      ,{
+        text:'CANCELAR',
+        role:'cancel',
+        handler: () => {
+          console.log('cancelado')
+        }
+      }
+    ],
+    });
+
+    await alert.present();
+  }
+
+  public subirEncuesta(tipo: string){
+    let resultados = []
+    let prefix = ''
+    if ( tipo.includes('Atr') ) {
+       prefix = 'atributo_'
+       for ( let i = 0; i < this.atributosISC.length; i++) {
+        //Generate form fields dynamically and add to results
+        console.log(prefix+i)
+        console.log(this.formAtributos.get(prefix+i).value)
+        resultados.push(this.formAtributos.get(prefix+i).value)
+       }
+    }else{ 
+       prefix = 'objetivo_'
+       for ( let i = 0; i < this.objetivosISC.length; i++) {
+        //Generate form fields dynamically and add to results
+        //console.log(prefix+i)
+        //console.log(this.formAtributos.get(prefix+i).value)
+        //resultados.push(this.formObjetivos.get(prefix+i).value)
+       }
+
+    }
+    console.log(resultados)
+    this.encuestaP = {
+      tipo:tipo,
+      calificaciones: resultados
+    }
+    console.log(this.encuestaP)
+    /* this.encuestaP = {
+        tipo:tipo,
+
+     }*/
   }
 
 }

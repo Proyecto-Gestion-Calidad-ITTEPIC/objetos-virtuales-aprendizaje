@@ -1,4 +1,6 @@
-ion-icon {
+ion-row {
+  justify-items: center;
+  display: block;
   }
   ion-item-divider{
     --background:#FFF;
@@ -7,6 +9,27 @@ ion-icon {
     ion-icon{
       fill: #002e6b;
       font-size: 25px;
+
+    }
+  }
+ion-grid{
+  display: block;
+  --ion-grid-width: 100%;
+
+  --ion-grid-width-xl: 1180px;
+  ion-row{ion-button{margin-top: 20px;}}
+}
+@media only screen and (min-width: 1270px) {
+    ion-grid {
+       margin: 70px;
+   }
+  }
+  ion-alert.encuestaModal{
+    div{
+      background: #FFF;
+    }
+    .alert-title.sc-ion-alert-md{
+      color:red;
 
     }
   }

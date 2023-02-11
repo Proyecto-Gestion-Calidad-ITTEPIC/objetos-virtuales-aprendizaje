@@ -73,3 +73,16 @@ ion-toolbar {
         }
     }
 }
+ion-alert.encuestaModal{
+  div{
+    background: #FFF;
+    color:#002e6b !important;
+    .alert-title.sc-ion-alert-md{
+      color:#002e6b !important;
+    }
+    .alert-sub-title.sc-ion-alert-md{
+      color:#002e6b;
+    }
+  }
+  
+}
