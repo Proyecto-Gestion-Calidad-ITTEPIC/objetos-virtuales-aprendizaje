@@ -12,6 +12,7 @@ export class HomePage implements OnInit {
   public valMessage: Object;
   public loggedUser;
   constructor(private router : Router, private fb: FormBuilder, private auth: FireAuthService) {
+    //Obtener usuario
     this.auth.getCurrentUser().subscribe(res => {
       /*if (res !== null){
         console.log(res)
@@ -23,11 +24,11 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
-   
+   //Login form, via email and pw
     this.loginForm = this.fb.group({
       email:['',Validators.compose([
         Validators.required,
-        Validators.pattern(new RegExp(/^[a-zA-Z0-9]+@ittepic.edu.mx$/))
+        Validators.pattern(new RegExp(/^[a-zA-Z0-9]+@ittepic.edu.mx$/)) //Regex para correos de ittepic
       ])],
       password:['',Validators.compose([
         Validators.required
@@ -41,13 +42,14 @@ export class HomePage implements OnInit {
       password:[{type:'required', message:'Ingrese una contraseña'}]
     }
   }
-
+  //Navigarion methods
   public irAObjetos(){
     this.router.navigate(['/objetos-virtuales'],{});
   }
   public irAEncuesta(){
     this.router.navigate(['pantalla-encuesta'],{});
   }
+  //Email and pw login method
   public basicLogin(){
     if(this.loginForm.valid){
       let userData = {
@@ -59,13 +61,16 @@ export class HomePage implements OnInit {
         
     }
   }
+
   public obtenerUsuario(){
     console.log(this.loggedUser)
+    console.log(this.loggedUser._delegate.email)
     
   }
   public salir(){
     this.auth.signoutUser();
   }
+  //Google signin
   public googleLogin(){
     this.auth.signinGoogle();
   }

@@ -1,3 +1,4 @@
+import { FireAuthService } from './../services/fire-auth.service';
 import { Encuesta } from './../models/encuesta';
 import { EncuestaService } from './../services/encuesta.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -28,6 +29,7 @@ export class PantallaEncuestaPage implements OnInit {
   public formAtributos : FormGroup;
   public formObjetivos : FormGroup;
   public encuestaP: Encuesta
+  public loggedUser;
   
   public atributosISC=[
     'Implementa aplicaciones computacionales para solucionar problemas de diversos contextos, integrando diferentes tecnologías, plataformas o dispositivos.',
@@ -49,9 +51,17 @@ export class PantallaEncuestaPage implements OnInit {
     'El egresado promueve su capacitación constante para la aplicación del conocimiento adquirido en el ámbito laboral.'
   ]
 
-  constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService) { }
+  constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService, private auth: FireAuthService) {
+    //Obtain logged user
+    this.auth.getCurrentUser().subscribe(res => {
+      this.loggedUser = res
+      console.log(this.loggedUser)
+      
+    })
+   }
 
   ngOnInit() {
+    //Form group creation
     this.formAtributos = this.fb.group({
       atributo_0:[0],
       atributo_1:[0],
@@ -77,6 +87,8 @@ export class PantallaEncuestaPage implements OnInit {
   public sliderChange(val:number){
 
   }
+
+  //Form validation
   public formAtrCheck(){
     //console.log(this.formAtributos.valid)
     //console.log(this.formAtributos.get('atributo_0').value)
@@ -84,6 +96,7 @@ export class PantallaEncuestaPage implements OnInit {
       this.presentAlertModal('¿Desea enviar el formulario de satisfacción de Atributos de egreso? \n Revise sus respuestas','Atributos')
     }
   }
+
   public formObjCheck(){
     //console.log(this.formAtributos.valid)
     //console.log(this.formAtributos.get('atributo_0').value)
@@ -91,6 +104,7 @@ export class PantallaEncuestaPage implements OnInit {
       this.presentAlertModal('¿Desea enviar el formulario de satisfacción de Atributos de egreso? \n Revise sus respuestas','Objetivos')
     }
   }
+  //Modal confirmation dialog
   async presentAlertModal(m: string, t: string) {
     const alert = await this.alertController.create({
       header: 'ALERTA',
@@ -119,8 +133,10 @@ export class PantallaEncuestaPage implements OnInit {
   }
 
   public subirEncuesta(tipo: string){
+    let email = ''
     let resultados = []
     let prefix = ''
+    //Determine form and for loop through each attribute and push to result array
     if ( tipo.includes('Atr') ) {
        prefix = 'atributo_'
        for ( let i = 0; i < this.atributosISC.length; i++) {
@@ -139,12 +155,21 @@ export class PantallaEncuestaPage implements OnInit {
        }
 
     }
+    if (this.loggedUser !== null) {
+      email = this.loggedUser._delegate.email
+    }else {
+      email = 'anónimo'
+    }
+    //Determine email
+    this.loggedUser !== null ? email = this.loggedUser._delegate.email : 'anónimo'
     console.log(resultados)
     this.encuestaP = {
-      tipo:tipo,
-      calificaciones: resultados
+      tipo: tipo,
+      calificaciones: resultados,
+      email: email
     }
     console.log(this.encuestaP)
+    this.es.postEncuesta(this.encuestaP)
 
   }
 

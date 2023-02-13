@@ -11,6 +11,7 @@ export class EncuestaService {
   constructor(private firestore:AngularFirestore) { 
     this.encuestas=[]
   }
+  //Obtain polls
   public getEncuestas(): Observable<Encuesta[]>{
     return this.firestore.collection('encuestas').snapshotChanges()
     .pipe(map(actions=>{
@@ -22,6 +23,7 @@ export class EncuestaService {
     }));
   }
 
+  //Post a poll result on the db
   public postEncuesta(encuesta:Encuesta){
     this.firestore.collection('encuestas').add(encuesta)
   }

@@ -11,6 +11,7 @@ export class ObjetosVirtualesPage implements OnInit {
   public materias:Materia[]
   public results:Materia[]
   constructor(private MateriaService:MateriaServiceService) { 
+    //Obtener materias de la db
     this.MateriaService.getMaterias().subscribe((res)=>{
       this.materias=res
       console.log(this.materias)
@@ -20,6 +21,7 @@ export class ObjetosVirtualesPage implements OnInit {
   ngOnInit() {
     
   }
+  //Filtrar por nombre de materia, usado en la barra de buscar
   public filtrar(event){
     console.log(event.target.value);
     const query = event.target.value.toLowerCase();
