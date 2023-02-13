@@ -26,6 +26,7 @@ export class PantallaEncuestaPage implements OnInit {
   public objetivo_4: number = 0
   public objetivo_5: number = 0
   public formAtributos : FormGroup;
+  public formObjetivos : FormGroup;
   public encuestaP: Encuesta
   
   public atributosISC=[
@@ -62,6 +63,15 @@ export class PantallaEncuestaPage implements OnInit {
       atributo_7:[0],
       atributo_8:[0]
     });
+
+    this.formObjetivos = this.fb.group({
+      objetivo_0:[0],
+      objetivo_1:[0],
+      objetivo_2:[0],
+      objetivo_3:[0],
+      objetivo_4:[0],
+      objetivo_5:[0]
+    });
   }
 
   public sliderChange(val:number){
@@ -72,6 +82,13 @@ export class PantallaEncuestaPage implements OnInit {
     //console.log(this.formAtributos.get('atributo_0').value)
     if (this.formAtributos.valid) {
       this.presentAlertModal('¿Desea enviar el formulario de satisfacción de Atributos de egreso? \n Revise sus respuestas','Atributos')
+    }
+  }
+  public formObjCheck(){
+    //console.log(this.formAtributos.valid)
+    //console.log(this.formAtributos.get('atributo_0').value)
+    if (this.formObjetivos.valid) {
+      this.presentAlertModal('¿Desea enviar el formulario de satisfacción de Atributos de egreso? \n Revise sus respuestas','Objetivos')
     }
   }
   async presentAlertModal(m: string, t: string) {
@@ -118,7 +135,7 @@ export class PantallaEncuestaPage implements OnInit {
         //Generate form fields dynamically and add to results
         //console.log(prefix+i)
         //console.log(this.formAtributos.get(prefix+i).value)
-        //resultados.push(this.formObjetivos.get(prefix+i).value)
+        resultados.push(this.formObjetivos.get(prefix+i).value)
        }
 
     }
@@ -128,10 +145,7 @@ export class PantallaEncuestaPage implements OnInit {
       calificaciones: resultados
     }
     console.log(this.encuestaP)
-    /* this.encuestaP = {
-        tipo:tipo,
 
-     }*/
   }
 
 }
