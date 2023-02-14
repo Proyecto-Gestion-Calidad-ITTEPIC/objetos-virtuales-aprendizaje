@@ -2,8 +2,9 @@ import { FireAuthService } from './../services/fire-auth.service';
 import { Encuesta } from './../models/encuesta';
 import { EncuestaService } from './../services/encuesta.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { ElementRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Chart, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-pantalla-encuesta',
@@ -30,6 +31,12 @@ export class PantallaEncuestaPage implements OnInit {
   public formObjetivos : FormGroup;
   public encuestaP: Encuesta
   public loggedUser;
+  public encuestasDB;
+  public ChartData;
+  public ChartColorArray;
+  public BarChart;
+  //Link the canvas to a viewchild variable for easy reference 
+  @ViewChild('barChart') barChart: ElementRef;
   
   public atributosISC=[
     'Implementa aplicaciones computacionales para solucionar problemas de diversos contextos, integrando diferentes tecnologías, plataformas o dispositivos.',
@@ -52,13 +59,22 @@ export class PantallaEncuestaPage implements OnInit {
   ]
 
   constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService, private auth: FireAuthService) {
+    //Register controllers in order to render the charts correctly
+    Chart.register(...registerables)
     //Obtain logged user
     this.auth.getCurrentUser().subscribe(res => {
       this.loggedUser = res
       console.log(this.loggedUser)
       
     })
+    this.es.getEncuestas().subscribe(res => {
+      this.encuestasDB = res 
+      console.log(res[0].calificaciones)
+      this.createVBarChart()
+    })
    }
+
+   
 
   ngOnInit() {
     //Form group creation
@@ -85,6 +101,30 @@ export class PantallaEncuestaPage implements OnInit {
   }
 
   public sliderChange(val:number){
+
+  }
+
+  public createVBarChart(){
+    //Render charts if data found
+          if ( this.encuestasDB !== null ){
+            console.log('En barra')
+        this.BarChart = new Chart(this.barChart.nativeElement,{
+          type: 'bar',
+          data: {
+            labels: ['A1','A2','A3','A4','A5','A6','A7','A8','A9'],
+            datasets: [{
+              label: 'Calificaciones de atributos',
+              data: [200, -50, 30, 15, 20, 34], //obtained from db
+              backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+              borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+              borderWidth: 1
+            }]
+          }, 
+          options: {
+            indexAxis: 'y'
+          }
+        })
+      }
 
   }
 
