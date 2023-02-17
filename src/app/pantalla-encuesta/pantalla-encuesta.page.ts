@@ -12,18 +12,10 @@ import * as SimpleS from 'simple-statistics';
   styleUrls: ['./pantalla-encuesta.page.scss'],
 })
 export class PantallaEncuestaPage implements OnInit {
-  public resA0:number[][] = []
-  public resB0:number[][] = []
   public formAtributos : FormGroup;
   public formObjetivos : FormGroup;
   public encuestaP: Encuesta
   public loggedUser;
-  public encuestasDB;
-  public ChartData;
-  public ChartColorArray;
-  public BarChart;
-  public atributoLabels = ['A1','A2','A3','A4','A5','A6','A7','A8','A9']
-  public objetivoLabels = ['B1','B2','B3','B4','B5','B6','B7','B8','B9']
   //Link the canvas to a viewchild variable for easy reference 
   @ViewChild('barChart') barChart: ElementRef;
   
@@ -50,42 +42,9 @@ export class PantallaEncuestaPage implements OnInit {
   constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService, private auth: FireAuthService) {
     //Register controllers in order to render the charts correctly
     //console.log(atributo_0)
-    Chart.register(...registerables)
     //Obtain logged user
-    this.auth.getCurrentUser().subscribe(res => {
-      this.loggedUser = res
-      console.log(this.loggedUser)
-      
-    })
-    //Crear filas de arreglos de valores de cada propiedad
-    for (let a in this.atributosISC){
-      this.resA0.push([])
-    }
-    //Obtener encuestas
-    this.es.getEncuestas().subscribe(res => {
-      this.encuestasDB = res 
-      //Obtener valores para cada attr/objetivo
-      for (let e in res){
-        console.log(res[e].calificaciones)
-        for(let c in res[e].calificaciones){
-          this.resA0[c].push(res[e].calificaciones[c])
-          //console.log(res[e].calificaciones[c])
-        }
-      }
-      console.log(this.resA0)
-
-      this.createVBarChart(this.encuestasDB[1].calificaciones,this.atributoLabels)
-    })
    }
 
-   //Metodos estadísticos con graficas
-   public meanChart(data: Array<number>){
-      if ( data !== null ) {
-        //for (let e in )
-        console.log(SimpleS.mean(data))
-      }
-   }
-   
 
   ngOnInit() {
     //Form group creation
@@ -117,52 +76,6 @@ export class PantallaEncuestaPage implements OnInit {
 
   public createChart(chartType: string){
     
-  }
-  public createVBarChart(data: Array<number>, labels: Array<String>){
-    //Render charts if data found
-          if ( this.encuestasDB !== null ){
-            console.log('En barra')
-            const plugin = {
-              id: 'customCanvasBackgroundColor',
-              beforeDraw: (chart, args, options) => {
-                const {ctx} = chart;
-                ctx.save();
-                ctx.globalCompositeOperation = 'destination-over';
-                ctx.fillStyle = '#FFF';
-                ctx.fillRect(0, 0, chart.width, chart.height);
-                ctx.restore();
-              }
-            };
-        this.BarChart = new Chart(this.barChart.nativeElement,{
-          type: 'bar',
-          data: {
-            labels: labels ,
-            datasets: [{
-              label: 'Calificaciones',
-              data: data, //obtained from db
-              backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(255, 205, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(154, 162, 35, 0.2)',
-              'rgba(53, 02, 25, 0.2)',
-              'rgba(201, 203, 207, 0.2)' ],// array should have same number of elements as number of dataset
-              borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
-              borderWidth: 1
-            }]
-          }, 
-          options: {
-            //indexAxis: 'y',
-            scales: {r: {min :-6}},
-            maintainAspectRatio: false
-          },
-          plugins: [plugin]
-        })
-      }
-
   }
 
   //Form validation

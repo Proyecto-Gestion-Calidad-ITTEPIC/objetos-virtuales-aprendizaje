@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab1</ion-title>
+    <ion-title>Estadisticas Generales</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>Calificaciones Recibidas</ion-card-subtitle>
+      <ion-card-title>Encuesta de Atributos</ion-card-title>
+      <ion-button fill="outline" shape="round" (click) = "meanChart()">Mean Chart</ion-button>
+
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #atrChart></canvas>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
