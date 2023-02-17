@@ -5,28 +5,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ElementRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Chart, registerables } from 'chart.js';
-
+import * as SimpleS from 'simple-statistics';
 @Component({
   selector: 'app-pantalla-encuesta',
   templateUrl: './pantalla-encuesta.page.html',
   styleUrls: ['./pantalla-encuesta.page.scss'],
 })
 export class PantallaEncuestaPage implements OnInit {
-  public atributo_0: number = 0
-  public atributo_1: number = 0
-  public atributo_2: number = 0
-  public atributo_3: number = 0
-  public atributo_4: number = 0
-  public atributo_5: number = 0
-  public atributo_6: number = 0
-  public atributo_7: number = 0
-  public atributo_8: number = 0
-  public objetivo_0: number = 0
-  public objetivo_1: number = 0
-  public objetivo_2: number = 0
-  public objetivo_3: number = 0
-  public objetivo_4: number = 0
-  public objetivo_5: number = 0
+  public resA0:number[][] = []
+  public resB0:number[][] = []
   public formAtributos : FormGroup;
   public formObjetivos : FormGroup;
   public encuestaP: Encuesta
@@ -35,6 +22,8 @@ export class PantallaEncuestaPage implements OnInit {
   public ChartData;
   public ChartColorArray;
   public BarChart;
+  public atributoLabels = ['A1','A2','A3','A4','A5','A6','A7','A8','A9']
+  public objetivoLabels = ['B1','B2','B3','B4','B5','B6','B7','B8','B9']
   //Link the canvas to a viewchild variable for easy reference 
   @ViewChild('barChart') barChart: ElementRef;
   
@@ -60,6 +49,7 @@ export class PantallaEncuestaPage implements OnInit {
 
   constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService, private auth: FireAuthService) {
     //Register controllers in order to render the charts correctly
+    //console.log(atributo_0)
     Chart.register(...registerables)
     //Obtain logged user
     this.auth.getCurrentUser().subscribe(res => {
@@ -67,13 +57,34 @@ export class PantallaEncuestaPage implements OnInit {
       console.log(this.loggedUser)
       
     })
+    //Crear filas de arreglos de valores de cada propiedad
+    for (let a in this.atributosISC){
+      this.resA0.push([])
+    }
+    //Obtener encuestas
     this.es.getEncuestas().subscribe(res => {
       this.encuestasDB = res 
-      console.log(res[0].calificaciones)
-      this.createVBarChart()
+      //Obtener valores para cada attr/objetivo
+      for (let e in res){
+        console.log(res[e].calificaciones)
+        for(let c in res[e].calificaciones){
+          this.resA0[c].push(res[e].calificaciones[c])
+          //console.log(res[e].calificaciones[c])
+        }
+      }
+      console.log(this.resA0)
+
+      this.createVBarChart(this.encuestasDB[1].calificaciones,this.atributoLabels)
     })
    }
 
+   //Metodos estadísticos con graficas
+   public meanChart(data: Array<number>){
+      if ( data !== null ) {
+        //for (let e in )
+        console.log(SimpleS.mean(data))
+      }
+   }
    
 
   ngOnInit() {
@@ -104,25 +115,51 @@ export class PantallaEncuestaPage implements OnInit {
 
   }
 
-  public createVBarChart(){
+  public createChart(chartType: string){
+    
+  }
+  public createVBarChart(data: Array<number>, labels: Array<String>){
     //Render charts if data found
           if ( this.encuestasDB !== null ){
             console.log('En barra')
+            const plugin = {
+              id: 'customCanvasBackgroundColor',
+              beforeDraw: (chart, args, options) => {
+                const {ctx} = chart;
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillStyle = '#FFF';
+                ctx.fillRect(0, 0, chart.width, chart.height);
+                ctx.restore();
+              }
+            };
         this.BarChart = new Chart(this.barChart.nativeElement,{
           type: 'bar',
           data: {
-            labels: ['A1','A2','A3','A4','A5','A6','A7','A8','A9'],
+            labels: labels ,
             datasets: [{
-              label: 'Calificaciones de atributos',
-              data: [200, -50, 30, 15, 20, 34], //obtained from db
-              backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
+              label: 'Calificaciones',
+              data: data, //obtained from db
+              backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(154, 162, 35, 0.2)',
+              'rgba(53, 02, 25, 0.2)',
+              'rgba(201, 203, 207, 0.2)' ],// array should have same number of elements as number of dataset
               borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
               borderWidth: 1
             }]
           }, 
           options: {
-            indexAxis: 'y'
-          }
+            //indexAxis: 'y',
+            scales: {r: {min :-6}},
+            maintainAspectRatio: false
+          },
+          plugins: [plugin]
         })
       }
 
