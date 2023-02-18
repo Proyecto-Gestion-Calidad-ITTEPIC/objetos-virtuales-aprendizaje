@@ -85,7 +85,7 @@ export class Tab1Page implements OnInit {
         promediosAtr.push(SimpleS.mean(this.resA0[i]))
         //this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
       }
-      this.createVBarChartAtr(promediosAtr,this.atributoLabels)
+      this.createChartAtr(promediosAtr,this.atributoLabels)
 
       let promediosObj = []
       for(let i in this.resB0){
@@ -94,7 +94,7 @@ export class Tab1Page implements OnInit {
         promediosAtr.push(SimpleS.mean(this.resB0[i]))
         //this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
       }
-      this.createVBarChartObj(promediosObj,this.objetivoLabels)
+      this.createChartObj(promediosObj,this.objetivoLabels)
 
     })
 
@@ -157,20 +157,73 @@ export class Tab1Page implements OnInit {
       this.ObjChart.update()
   }
 
-  public modeChartAtr(){
+  public modeChart(tipo: boolean = false){
     let total = this.AtrChart.data.datasets[0].data.length
     for ( let i = 0; i < total ; i++) {
       this.AtrChart.data.datasets[0].data.pop()
     }
     let modas = []
-    for ( let i in this.resA0) {
-      modas.push(SimpleS.mode(this.resA0[i]))
+    let data = this.resA0 //default
+    if (tipo) data = this.resB0 //si true es objetivos, sino atributos
+    for ( let i in data) {
+      modas.push(SimpleS.mode(data[i]))
     }
     for (let m of modas) {
       this.AtrChart.data.datasets[0].data.push(m)
     }
-    this.AtrChart.update()
+    if (!tipo){
+      this.AtrChart.update()
+    }else{
+      this.ObjChart.update()
+    }
   }
+
+  public updateChart(tipo: boolean = false, metodo: number = 0){
+    /*Metodos: 0= mean, 1= mode, 2= median */
+    let total = this.AtrChart.data.datasets[0].data.length
+    for ( let i = 0; i < total ; i++) {
+      this.AtrChart.data.datasets[0].data.pop()
+    }
+    let modas = []
+    let data = this.resA0 //default
+    if (tipo) data = this.resB0 //si true es objetivos, sino atributos
+    switch (metodo) {
+      case 1:
+        for ( let i in data) {
+          modas.push(SimpleS.mode(data[i]))
+        }
+        for (let m of modas) {
+          this.AtrChart.data.datasets[0].data.push(m)
+        }
+
+        break;
+      case 2:
+        for ( let i in data) {
+          modas.push(SimpleS.median(data[i]))
+        }
+        for (let m of modas) {
+          this.AtrChart.data.datasets[0].data.push(m)
+        }
+        
+        break;
+    
+      default:
+        for ( let i in data) {
+          modas.push(SimpleS.mean(data[i]))
+        }
+        for (let m of modas) {
+          this.AtrChart.data.datasets[0].data.push(m)
+        }
+
+        break;
+    }
+    if (!tipo){
+      this.AtrChart.update()
+    }else{
+      this.ObjChart.update()
+    }
+  }
+
 
 public radial(chart){
   //console.log(this.AtrChart.config._config)
@@ -183,9 +236,20 @@ public radial(chart){
   chart.config._config.options = options
   chart.update()
 }
+public bar(chart){
+  //console.log(this.AtrChart.config._config)
+  chart.config._config.type = 'bar'
+  let options: {
+    //indexAxis: 'y',
+    scales: {r: {min :-6}},
+    maintainAspectRatio: false
+  }
+  chart.config._config.options = options
+  chart.update()
+}
 
 
-  public createVBarChartAtr(data: Array<number>, labels: Array<String>){
+  public createChartAtr(data: Array<number>, labels: Array<String>){
     //Render charts if data found
           if ( this.encuestasDB !== null ){
             console.log('En barra')
@@ -233,7 +297,7 @@ public radial(chart){
 
   }
 
-  public createVBarChartObj(data: Array<number>, labels: Array<String>){
+  public createChartObj(data: Array<number>, labels: Array<String>){
     //Render charts if data found
           if ( this.encuestasDB !== null ){
             console.log('En barra')
