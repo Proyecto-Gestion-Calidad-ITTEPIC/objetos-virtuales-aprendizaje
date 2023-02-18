@@ -9,12 +9,29 @@
     <ion-card-header>
       <ion-card-subtitle>Calificaciones Recibidas</ion-card-subtitle>
       <ion-card-title>Encuesta de Atributos</ion-card-title>
-      <ion-button fill="outline" shape="round" (click) = "meanChart()">Mean Chart</ion-button>
-
+      <ion-button fill="outline" shape="round" (click) = "meanChartAtr()">Mean</ion-button>
+      <ion-button fill="outline" shape="round" (click) = "modeChartAtr()">Mode</ion-button>
+      <ion-button fill="outline" shape="round" (click) = "meanChartAtr()">Median</ion-button>
+      <ion-button fill="outline" shape="round" (click) = "radial(this.AtrChart)">Polar Chart</ion-button>
+      
     </ion-card-header>
     <ion-card-content>
       <canvas #atrChart></canvas>
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Calificaciones Recibidas</ion-card-subtitle>
+    <ion-card-title>Encuesta de Objetivos</ion-card-title>
+    <ion-button fill="outline" shape="round" (click) = "meanChartObj()">Mean</ion-button>
+    <ion-button fill="outline" shape="round" (click) = "meanChartObj()">Mode</ion-button>
+    <ion-button fill="outline" shape="round" (click) = "meanChartObj()">Median</ion-button>
+    <ion-button fill="outline" shape="round" (click) = "radial(this.ObjChart)">Polar Chart</ion-button>
+  </ion-card-header>
+  <ion-card-content>
+    <canvas #objChart></canvas>
+  </ion-card-content>
+</ion-card>
 
 </ion-content>

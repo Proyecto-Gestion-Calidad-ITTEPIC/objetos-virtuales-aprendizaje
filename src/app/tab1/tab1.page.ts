@@ -18,12 +18,14 @@ export class Tab1Page implements OnInit {
   public ChartData;
   public ChartColorArray;
   public AtrChart;
+  public ObjChart;
   public atributoLabels = ['A1','A2','A3','A4','A5','A6','A7','A8','A9']
   public objetivoLabels = ['B1','B2','B3','B4','B5','B6','B7','B8','B9']
   public loggedUser;
 
   //Link the canvas to a viewchild variable for easy reference 
   @ViewChild('atrChart') atrChart: ElementRef;
+  @ViewChild('objChart') objChart: ElementRef;
 
   public atributosISC=[
     'Implementa aplicaciones computacionales para solucionar problemas de diversos contextos, integrando diferentes tecnologías, plataformas o dispositivos.',
@@ -76,8 +78,24 @@ export class Tab1Page implements OnInit {
       console.log(this.resA0)
       console.log(this.resB0)
       
+      let promediosAtr = []
+      for(let i in this.resA0){
+        //console.log(this.resA0[i])
+        console.log(SimpleS.mean(this.resA0[i]))
+        promediosAtr.push(SimpleS.mean(this.resA0[i]))
+        //this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
+      }
+      this.createVBarChartAtr(promediosAtr,this.atributoLabels)
 
-      this.createVBarChart(this.encuestasDB[0].calificaciones,this.atributoLabels)
+      let promediosObj = []
+      for(let i in this.resB0){
+        //console.log(this.resA0[i])
+        console.log(SimpleS.mean(this.resB0[i]))
+        promediosAtr.push(SimpleS.mean(this.resB0[i]))
+        //this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
+      }
+      this.createVBarChartObj(promediosObj,this.objetivoLabels)
+
     })
 
   }
@@ -86,9 +104,7 @@ export class Tab1Page implements OnInit {
   }
 
    //Metodos estadísticos con graficas
-   public meanChart(){
-      
-
+   public meanChartAtr(){      
         //this.createVBarChart(data,this.atributoLabels)
         //console.log(this.AtrChart.data.datasets[0].data)
         //console.log(this.AtrChart.data.datasets[0].data.length)
@@ -99,18 +115,77 @@ export class Tab1Page implements OnInit {
         }
         //console.log(this.AtrChart.data.datasets[0].data)
         //Añadir nuevos datos
-        for(let i in this.resA0[0]){
-          console.log(this.resA0[0][i])
-          this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
+        let promedios = []
+        for(let i in this.resA0){
+          //console.log(this.resA0[i])
+          console.log(SimpleS.mean(this.resA0[i]))
+          promedios.push(SimpleS.mean(this.resA0[i]))
+          //this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
+        }
+        console.log(promedios)
+        for( let p of promedios){
+          this.AtrChart.data.datasets[0].data.push(p)
         }
         console.log(this.AtrChart.data.datasets[0].data)
         //Mostrar datos
         this.AtrChart.update()
     }
- 
+    public meanChartObj(){      
+      //this.createVBarChart(data,this.atributoLabels)
+      //console.log(this.AtrChart.data.datasets[0].data)
+      //console.log(this.AtrChart.data.datasets[0].data.length)
+      let total = this.ObjChart.data.datasets[0].data.length
+      //Borrar datos existentes
+      for (let i = 0; i < total ; i++ ){
+        this.ObjChart.data.datasets[0].data.pop()
+      }
+      //console.log(this.AtrChart.data.datasets[0].data)
+      //Añadir nuevos datos
+      let promedios = []
+      for(let i in this.resB0){
+        //console.log(this.resA0[i])
+        console.log(SimpleS.mean(this.resB0[i]))
+        promedios.push(SimpleS.mean(this.resB0[i]))
+        //this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
+      }
+      console.log(promedios)
+      for( let p of promedios){
+        this.ObjChart.data.datasets[0].data.push(p)
+      }
+      console.log(this.ObjChart.data.datasets[0].data)
+      //Mostrar datos
+      this.ObjChart.update()
+  }
+
+  public modeChartAtr(){
+    let total = this.AtrChart.data.datasets[0].data.length
+    for ( let i = 0; i < total ; i++) {
+      this.AtrChart.data.datasets[0].data.pop()
+    }
+    let modas = []
+    for ( let i in this.resA0) {
+      modas.push(SimpleS.mode(this.resA0[i]))
+    }
+    for (let m of modas) {
+      this.AtrChart.data.datasets[0].data.push(m)
+    }
+    this.AtrChart.update()
+  }
+
+public radial(chart){
+  //console.log(this.AtrChart.config._config)
+  chart.config._config.type = 'polarArea'
+  let options: {
+    //indexAxis: 'y',
+    scales: {r: {min :-6}},
+    maintainAspectRatio: false
+  }
+  chart.config._config.options = options
+  chart.update()
+}
 
 
-  public createVBarChart(data: Array<number>, labels: Array<String>){
+  public createVBarChartAtr(data: Array<number>, labels: Array<String>){
     //Render charts if data found
           if ( this.encuestasDB !== null ){
             console.log('En barra')
@@ -130,7 +205,55 @@ export class Tab1Page implements OnInit {
           data: {
             labels: labels ,
             datasets: [{
-              label: 'Calificaciones',
+              label: 'Calificaciones Atributos',
+              data: data, //obtained from db
+              backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(154, 162, 35, 0.2)',
+              'rgba(53, 02, 25, 0.2)',
+              'rgba(201, 203, 207, 0.2)' ],// array should have same number of elements as number of dataset
+              borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+              borderWidth: 1
+            }]
+          }, 
+          options: {
+            //indexAxis: 'y',
+            scales: {r: {min :-6}},
+            maintainAspectRatio: false
+          },
+          plugins: [plugin]
+        })
+        console.log(this.AtrChart.config._config)
+      }
+
+  }
+
+  public createVBarChartObj(data: Array<number>, labels: Array<String>){
+    //Render charts if data found
+          if ( this.encuestasDB !== null ){
+            console.log('En barra')
+            const plugin = {
+              id: 'customCanvasBackgroundColor',
+              beforeDraw: (chart, args, options) => {
+                const {ctx} = chart;
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillStyle = '#FFF';
+                ctx.fillRect(0, 0, chart.width, chart.height);
+                ctx.restore();
+              }
+            };
+        this.ObjChart = new Chart(this.objChart.nativeElement,{
+          type: 'bar',
+          data: {
+            labels: labels ,
+            datasets: [{
+              label: 'Calificaciones Objetivos',
               data: data, //obtained from db
               backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
