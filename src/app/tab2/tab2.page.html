@@ -10,38 +10,32 @@
       <ion-col size="12" size-sm="4">
         <ion-item-divider>Encuestas Registradas</ion-item-divider>
         <ion-list [inset]="true">
-          <ion-item *ngFor="let en of this.encuestas" button (click)="updateChart(en.id)">
+          <ion-item
+            *ngFor="let en of this.encuestas"
+            button
+            (click)="updateChart(en.id)"
+          >
             <ion-label>{{en.id}}</ion-label>
           </ion-item>
-          
         </ion-list>
       </ion-col>
       <ion-col size="12" size-sm="8">
         <ion-row>
-          <ion-card >
+          <ion-card>
             <ion-card-header>
               <ion-card-subtitle>Calificaciones Recibidas</ion-card-subtitle>
               <ion-card-title>Encuesta</ion-card-title>
-              
             </ion-card-header>
             <ion-card-content>
               <canvas #chart></canvas>
             </ion-card-content>
           </ion-card>
         </ion-row>
-        <ion-row>
-          
-            Datos
-          <ion-row>
-            <ion-list [inset]="true" *ngIf="this.encData">
-              <ion-item>{{this.encData.tipo}}</ion-item>
-              <ion-item>{{this.encData.email}}</ion-item>
-            </ion-list>
-          </ion-row>
+        <ion-row *ngIf="this.encData">
+          <ion-item>Tipo: {{this.encData.tipo}}</ion-item>
+          <ion-item>Email: {{this.encData.email}}</ion-item>
         </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
 </ion-content>

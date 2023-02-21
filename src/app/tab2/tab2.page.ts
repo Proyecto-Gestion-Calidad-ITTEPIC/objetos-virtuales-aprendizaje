@@ -109,6 +109,9 @@ export class Tab2Page implements OnInit {
       email: src.email
 
     }
+    if ( src.id === 'z6wnu3zu2LExQ4WZ4mg4'){
+      this.encData.email = 'dart'
+    }
   }
 
 }
