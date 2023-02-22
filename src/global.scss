@@ -86,10 +86,15 @@ ion-alert.encuestaModal{
   }
   
 }
-ion-tab-bar,ion-tab-button{
+ion-tab-bar,ion-tab-button,ion-item-divider{
   background-color: #FFF;
   color: #002e6b;
 }
-ion-item-divider{
-  --background:#FFF;
+.homeAlert{
+  --background: #FFF ;
+  .alert-title.sc-ion-alert-md,.alert-sub-title.sc-ion-alert-md{
+    color:#002e6b ;
+
+  }
+
 }

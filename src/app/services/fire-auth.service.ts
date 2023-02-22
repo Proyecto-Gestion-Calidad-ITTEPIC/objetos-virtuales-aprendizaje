@@ -6,6 +6,7 @@ import * as firebase from 'firebase/compat/app'
 })
 export class FireAuthService {
 
+  public signInObj = null
   constructor( private AngularFireAuth: AngularFireAuth ) {  }
   createUser(val) {
     return new Promise<any>((resolve,reject) => {
@@ -36,6 +37,7 @@ export class FireAuthService {
           .then( () => {
             console.log('User signed out')
             resolve()
+            this.signInObj = null
           }).catch( () => {
             reject()
           })
@@ -43,13 +45,14 @@ export class FireAuthService {
     })
   }
 
-  signinGoogle(){
+  async signinGoogle(){
     const provider = new firebase.default.auth.GoogleAuthProvider(); //Google popup
     console.log(provider)
     //Show popup with login
     return this.oAuthLogin(provider)
       .then(val => {
         console.log('success',val)
+        return JSON.stringify(val)
       })
       .catch(err => {
         console.log('Something went wrong: '+err)
