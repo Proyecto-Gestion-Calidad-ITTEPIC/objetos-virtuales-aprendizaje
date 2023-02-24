@@ -12,9 +12,9 @@ ion-row {
   }
 ion-grid{
   display: block;
-  --ion-grid-width: 100%;
+  //--ion-grid-width: 100%;
 
-  --ion-grid-width-xl: 1180px;
+  //--ion-grid-width-xl: 1180px;
   ion-row{ion-button{margin-top: 20px;}}
 }
 @media only screen and (min-width: 1270px) {

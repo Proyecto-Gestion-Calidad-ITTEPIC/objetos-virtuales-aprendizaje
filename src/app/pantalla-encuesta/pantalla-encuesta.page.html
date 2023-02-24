@@ -73,6 +73,21 @@
       <ion-item slot="content" style="justify-content: center">
         <form [formGroup]="formAtributos">
           <ion-grid [fixed]="true">
+            <ion-row size-lg="6" size-md="6" size-sm="6" size="12">
+              <ion-col >
+                <ion-item>
+                  <ion-label position="stacked">Correo (opcional)</ion-label>
+                  <ion-input
+                  type="email"
+                  placeholder="email@domain.com"
+                  inputmode="email"
+                  formControlName="email"
+                  ></ion-input>
+                  <ion-note slot="helper">Enter a valid email</ion-note>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
             <ion-row *ngFor="let at of atributosISC; let i = index ">
               <ion-col>
                 <ion-item>
