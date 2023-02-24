@@ -58,9 +58,13 @@ export class Tab1Page implements OnInit {
     for (let a in this.atributosISC){
       this.resA0.push([])
     }
+    for (let o in this.objetivosISC){
+      this.resB0.push([])
+    }
     //Obtener encuestas
     this.es.getEncuestas().subscribe(res => {
       this.encuestasDB = res 
+      console.log(res)
       //Obtener valores para cada attr/objetivo
       for (let e in res){
         console.log(res[e])

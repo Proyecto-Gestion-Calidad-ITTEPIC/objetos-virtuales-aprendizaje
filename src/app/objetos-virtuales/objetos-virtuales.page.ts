@@ -1,6 +1,7 @@
 import { MateriaServiceService } from './../services/materia-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Materia } from '../models/materia';
+import { FireAuthService } from '../services/fire-auth.service';
 
 @Component({
   selector: 'app-objetos-virtuales',
@@ -10,13 +11,26 @@ import { Materia } from '../models/materia';
 export class ObjetosVirtualesPage implements OnInit {
   public materias:Materia[]
   public results:Materia[]
-  constructor(private MateriaService:MateriaServiceService) { 
+  public loggedUser
+  constructor(private MateriaService:MateriaServiceService, private auth: FireAuthService) { 
     //Obtener materias de la db
     this.MateriaService.getMaterias().subscribe((res)=>{
       this.materias=res
       console.log(this.materias)
-      console.log(this.results)
-    })  }
+      console.log('user')
+      //console.log(this.results)
+    }) 
+    this.auth.getCurrentUser().subscribe(res => {
+      /*if (res !== null){
+        console.log(res)
+      }else console.log('No user')
+      */
+      this.loggedUser=res;
+      console.log('user')
+      console.log(this.loggedUser)
+    })
+
+  }
 
   ngOnInit() {
     

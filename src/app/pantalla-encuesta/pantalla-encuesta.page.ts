@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FireAuthService } from './../services/fire-auth.service';
 import { Encuesta } from './../models/encuesta';
 import { EncuestaService } from './../services/encuesta.service';
@@ -6,6 +7,7 @@ import { ElementRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Chart, registerables } from 'chart.js';
 import * as SimpleS from 'simple-statistics';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-pantalla-encuesta',
   templateUrl: './pantalla-encuesta.page.html',
@@ -16,6 +18,7 @@ export class PantallaEncuestaPage implements OnInit {
   public formObjetivos : FormGroup;
   public encuestaP: Encuesta
   public loggedUser;
+  public hoy: Date;
   //Link the canvas to a viewchild variable for easy reference 
   @ViewChild('barChart') barChart: ElementRef;
   
@@ -39,7 +42,7 @@ export class PantallaEncuestaPage implements OnInit {
     'El egresado promueve su capacitación constante para la aplicación del conocimiento adquirido en el ámbito laboral.'
   ]
 
-  constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService, private auth: FireAuthService) {
+  constructor(private fb:FormBuilder, private alertController: AlertController, private es: EncuestaService, private auth: FireAuthService, private router:Router) {
     //Register controllers in order to render the charts correctly
     //console.log(atributo_0)
     //Obtain logged user
@@ -57,7 +60,11 @@ export class PantallaEncuestaPage implements OnInit {
       atributo_5:[0],
       atributo_6:[0],
       atributo_7:[0],
-      atributo_8:[0]
+      atributo_8:[0],
+      email:['',Validators.compose([
+        Validators.pattern(new RegExp(/^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/))
+      ])]
+
     });
 
     this.formObjetivos = this.fb.group({
@@ -66,7 +73,10 @@ export class PantallaEncuestaPage implements OnInit {
       objetivo_2:[0],
       objetivo_3:[0],
       objetivo_4:[0],
-      objetivo_5:[0]
+      objetivo_5:[0],
+      email:['',Validators.compose([
+        Validators.pattern(new RegExp(/^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/))
+      ])]
     });
   }
 
@@ -97,9 +107,9 @@ export class PantallaEncuestaPage implements OnInit {
   //Modal confirmation dialog
   async presentAlertModal(m: string, t: string) {
     const alert = await this.alertController.create({
-      header: 'ALERTA',
+      header: 'ALERTA: ENTREGA DE FORMULARIO',
       subHeader: 'Aviso: ',
-      message: m,
+      message: m + '\nIngrese su email (opcional)',
       cssClass: 'encuestaModal',
       buttons: [{
         text:'CONFIRMAR',
@@ -135,6 +145,7 @@ export class PantallaEncuestaPage implements OnInit {
         console.log(this.formAtributos.get(prefix+i).value)
         resultados.push(this.formAtributos.get(prefix+i).value)
        }
+       email = this.formAtributos.get('email').value
     }else{ 
        prefix = 'objetivo_'
        for ( let i = 0; i < this.objetivosISC.length; i++) {
@@ -143,23 +154,34 @@ export class PantallaEncuestaPage implements OnInit {
         //console.log(this.formAtributos.get(prefix+i).value)
         resultados.push(this.formObjetivos.get(prefix+i).value)
        }
+       email = this.formObjetivos.get('email').value
 
     }
+    /** 
+     * 
     if (this.loggedUser !== null) {
       email = this.loggedUser._delegate.email
     }else {
       email = 'anónimo'
     }
+    */
     //Determine email
-    this.loggedUser !== null ? email = this.loggedUser._delegate.email : 'anónimo'
+    let dat = new Date()
+    //this.loggedUser !== null ? email = this.loggedUser._delegate.email : 'anónimo'
     console.log(resultados)
     this.encuestaP = {
       tipo: tipo,
       calificaciones: resultados,
-      email: email
+      email: email,
+      fecha: dat
     }
     console.log(this.encuestaP)
     this.es.postEncuesta(this.encuestaP)
+
+  }
+
+  public irAResultados(){
+    this.router.navigate(['/tabs'],{});
 
   }
 

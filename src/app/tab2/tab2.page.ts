@@ -1,3 +1,4 @@
+import { timeout } from 'rxjs';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import * as SimpleS from 'simple-statistics';
@@ -25,7 +26,7 @@ export class Tab2Page implements OnInit {
       Chart.register(...registerables)
       this.es.getEncuestas().subscribe(res => {
         this.encuestas = structuredClone(res)
-        
+        timeout(2000)
         console.log(this.encuestas)
         this.enc = structuredClone(this.encuestas[this.encuestas.length-1])
         console.log(this.enc)

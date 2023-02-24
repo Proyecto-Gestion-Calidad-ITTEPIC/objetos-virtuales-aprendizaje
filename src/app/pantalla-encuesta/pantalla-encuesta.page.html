@@ -52,10 +52,15 @@
     </ion-accordion>
   </ion-accordion-group>
   <ion-item> Encuesta </ion-item>
-  <ion-item
-    >Seleccione su nivel de satisfacción, un número mayor indica un mejor nivel
-    de desempeño</ion-item
-  >
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      Para llenar una encuesta, seleccione su nivel de satisfacción, un número
+      mayor indica un mejor nivel de desempeño
+    </ion-label>
+    <ion-button shape="round" (click)="irAResultados()"
+      >Visualizar Resultados</ion-button
+    >
+  </ion-item>
   <ion-accordion-group>
     <ion-accordion
       value="third"
@@ -65,7 +70,7 @@
       <ion-item slot="header" class="accordionHeader">
         <ion-label>Encuesta de Atributos de Egreso (ISC)</ion-label>
       </ion-item>
-      <ion-item slot="content" style="justify-content: center;">
+      <ion-item slot="content" style="justify-content: center">
         <form [formGroup]="formAtributos">
           <ion-grid [fixed]="true">
             <ion-row *ngFor="let at of atributosISC; let i = index ">
@@ -97,13 +102,12 @@
                 expand="block"
                 fill="outline"
                 size="large"
-                (click)="formAtrCheck()"                
-              >Entregar Encuesta
+                (click)="formAtrCheck()"
+                >Entregar Encuesta
               </ion-button>
             </ion-row>
           </ion-grid>
         </form>
-
       </ion-item>
     </ion-accordion>
   </ion-accordion-group>
@@ -116,15 +120,32 @@
       <ion-item slot="header" class="accordionHeader">
         <ion-label>Encuesta de Objetivos Educacionales (ISC)</ion-label>
       </ion-item>
-      <ion-item slot="content" style="justify-content: center;">
+      <ion-item slot="content" style="justify-content: center">
         <form [formGroup]="formObjetivos">
           <ion-grid [fixed]="true">
+            <ion-row size-lg="6" size-md="6" size-sm="6" size="12">
+              <ion-col >
+                <ion-item>
+                  <ion-label position="stacked">Correo (opcional)</ion-label>
+                  <ion-input
+                  type="email"
+                  placeholder="email@domain.com"
+                  inputmode="email"
+                  formControlName="email"
+                  ></ion-input>
+                  <ion-note slot="helper">Enter a valid email</ion-note>
+                </ion-item>
+              </ion-col>
+            </ion-row>
             <ion-row *ngFor="let at of objetivosISC; let i = index ">
               <ion-col>
                 <ion-item>
                   <ion-label class="ion-text-wrap">
-                    <h2>Objetivo {{i+1}}</h2>
-                    <p>{{at}}</p>
+                    <ion-text>
+
+                      <h2>Objetivo {{i+1}}</h2>
+                      <p>{{at}}</p>
+                    </ion-text>
                   </ion-label>
                 </ion-item>
                 <ion-range
@@ -148,16 +169,13 @@
                 expand="block"
                 fill="outline"
                 size="large"
-                (click)="formObjCheck()"                
-              >Entregar Encuesta
+                (click)="formObjCheck()"
+                >Entregar Encuesta
               </ion-button>
             </ion-row>
           </ion-grid>
         </form>
-
       </ion-item>
     </ion-accordion>
   </ion-accordion-group>
-  
-
 </ion-content>

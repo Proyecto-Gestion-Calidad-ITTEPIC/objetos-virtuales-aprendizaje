@@ -30,8 +30,8 @@ ion-toolbar {
     --color: white;
   
     --border-color: #272727;
-    --border-width: 4px 0;
-    --border-style: double;
+    //--border-width: 4px 0;
+    //--border-style: double;
   
     --min-height: 80px;
     --padding-top: 20px;
@@ -39,7 +39,8 @@ ion-toolbar {
     ion-title{
       font-family: "Roboto";
       font-weight: 100; 
-      color: #000;
+      color: #000;   
+      padding-inline: 0px ; 
     }     
     ion-back-button{
       --color: #1e335e;
@@ -58,8 +59,6 @@ ion-toolbar {
       --color-hover:#014092;
       --color-activated:#3a7ed7;
       --background-activated:#3a7ed7;
-
-      
   }
   .list-md{
     background: unset;
@@ -94,7 +93,5 @@ ion-tab-bar,ion-tab-button,ion-item-divider{
   --background: #FFF ;
   .alert-title.sc-ion-alert-md,.alert-sub-title.sc-ion-alert-md{
     color:#002e6b ;
-
   }
-
 }
