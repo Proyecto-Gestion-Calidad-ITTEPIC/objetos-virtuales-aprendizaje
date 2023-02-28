@@ -95,7 +95,7 @@ export class Tab1Page implements OnInit {
       for(let i in this.resB0){
         //console.log(this.resA0[i])
         console.log(SimpleS.mean(this.resB0[i]))
-        promediosAtr.push(SimpleS.mean(this.resB0[i]))
+        promediosObj.push(SimpleS.mean(this.resB0[i]))
         //this.AtrChart.data.datasets[0].data.push(this.resA0[0][i])
       }
       this.createChartObj(promediosObj,this.objetivoLabels)
@@ -184,9 +184,18 @@ export class Tab1Page implements OnInit {
 
   public updateChart(tipo: boolean = false, metodo: number = 0){
     /*Metodos: 0= mean, 1= mode, 2= median */
-    let total = this.AtrChart.data.datasets[0].data.length
-    for ( let i = 0; i < total ; i++) {
-      this.AtrChart.data.datasets[0].data.pop()
+    if (tipo){
+      let total = this.ObjChart.data.datasets[0].data.length
+      for ( let i = 0; i < total ; i++) {
+        this.ObjChart.data.datasets[0].data.pop()
+      }
+  
+    }else{
+      let total = this.AtrChart.data.datasets[0].data.length
+      for ( let i = 0; i < total ; i++) {
+        this.AtrChart.data.datasets[0].data.pop()
+      }
+  
     }
     let modas = []
     let data = this.resA0 //default
@@ -197,7 +206,7 @@ export class Tab1Page implements OnInit {
           modas.push(SimpleS.mode(data[i]))
         }
         for (let m of modas) {
-          this.AtrChart.data.datasets[0].data.push(m)
+          tipo ? this.ObjChart.data.datasets[0].data.push(m) : this.AtrChart.data.datasets[0].data.push(m)
         }
 
         break;
@@ -206,9 +215,18 @@ export class Tab1Page implements OnInit {
           modas.push(SimpleS.median(data[i]))
         }
         for (let m of modas) {
-          this.AtrChart.data.datasets[0].data.push(m)
+         tipo ? this.ObjChart.data.datasets[0].data.push(m) : this.AtrChart.data.datasets[0].data.push(m)
         }
         
+        break;
+
+      case 3 :  //Desviación estándar
+        for ( let i in data ){ 
+          modas.push(SimpleS.standardDeviation(data[i]))
+        } 
+        for ( let m of modas){
+          tipo ? this.ObjChart.data.datasets[0].data.push(m) : this.AtrChart.data.datasets[0].data.push(m)
+        } 
         break;
     
       default:
@@ -216,7 +234,7 @@ export class Tab1Page implements OnInit {
           modas.push(SimpleS.mean(data[i]))
         }
         for (let m of modas) {
-          this.AtrChart.data.datasets[0].data.push(m)
+          tipo ? this.ObjChart.data.datasets[0].data.push(m) : this.AtrChart.data.datasets[0].data.push(m)
         }
 
         break;
