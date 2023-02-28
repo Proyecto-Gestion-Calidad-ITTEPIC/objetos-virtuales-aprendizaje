@@ -36,14 +36,13 @@ export class Tab2Page implements OnInit {
         })
         for ( let i of this.encuestas){
           if (i.fecha){
-            i.fecha.toLocaleString('es-MX',{ timeZone: 'MST' })
+            i.fecha = i.fecha.toLocaleString('es-MX',{ timeZone: 'MST' })
           }
         }
 
         timeout(2000)
         console.log(this.encuestas)  
         this.enc = structuredClone(this.encuestas[this.encuestas.length-1])
-        //console.log(this.enc)
 
         this.enc.tipo.charAt(0)==='A' ? this.createChart(this.enc.calificaciones,this.atributoLabels) :  this.createChart(this.enc.calificaciones,this.objetivoLabels) ;
         this.updateData(this.enc)
