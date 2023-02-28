@@ -25,11 +25,26 @@ export class Tab2Page implements OnInit {
     ) { 
       Chart.register(...registerables)
       this.es.getEncuestas().subscribe(res => {
-        this.encuestas = structuredClone(res)
+        this.encuestas = structuredClone(res)  
+              for (let i of this.encuestas){
+          if (i.fecha){
+            i.fecha = new Date (i.fecha.seconds*1000 + i.fecha.nanoseconds/ 1000000)
+          }
+        }
+        this.encuestas.sort(function(x,y){
+          return y.fecha - x.fecha
+        })
+        for ( let i of this.encuestas){
+          if (i.fecha){
+            i.fecha.toLocaleString('es-MX',{ timeZone: 'MST' })
+          }
+        }
+
         timeout(2000)
-        console.log(this.encuestas)
+        console.log(this.encuestas)  
         this.enc = structuredClone(this.encuestas[this.encuestas.length-1])
-        console.log(this.enc)
+        //console.log(this.enc)
+
         this.enc.tipo.charAt(0)==='A' ? this.createChart(this.enc.calificaciones,this.atributoLabels) :  this.createChart(this.enc.calificaciones,this.objetivoLabels) ;
         this.updateData(this.enc)
       })
@@ -38,6 +53,10 @@ export class Tab2Page implements OnInit {
 
   ngOnInit() {
   }
+
+
+
+
 
   public createChart(data: Array<number>, labels: Array<String>){
     //Render charts if data found
@@ -90,7 +109,7 @@ export class Tab2Page implements OnInit {
   
   public updateChart(id: string){
     let data = this.encuestas.filter((enc) => enc.id === id)
-    console.log(this.enc)
+    //console.log(this.enc)
     //console.log(this.enc)
     let total = this.IChart.data.datasets[0].data.length
     //console.log()
@@ -104,7 +123,7 @@ export class Tab2Page implements OnInit {
   }
 
   public updateData(src: Encuesta){
-    console.log('en updateData')
+    //console.log('en updateData')
     this.encData = {
       tipo: src.tipo,
       email: src.email
