@@ -88,12 +88,14 @@
               </ion-col>
             </ion-row>
 
-            <ion-row *ngFor="let at of atributosISC; let i = index ">
+            <ion-row class="formItem" *ngFor="let at of atributosISC; let i = index ">
               <ion-col>
                 <ion-item>
                   <ion-label class="ion-text-wrap">
-                    <h2>Atributo {{i+1}}</h2>
-                    <p>{{at}}</p>
+                    <ion-text>
+                      <h2>Atributo {{i+1}}</h2>
+                      <p>{{at}}</p>
+                    </ion-text>
                   </ion-label>
                 </ion-item>
                 <ion-range
@@ -111,8 +113,16 @@
                   <ion-icon name="happy" slot="end"></ion-icon>
                 </ion-range>
               </ion-col>
+              <ion-col>
+                <ion-textarea 
+                placeholder="Escriba aquí algún comentario con respecto al atributo {{i+1}} (opcional)"
+                [autoGrow]="true"
+                formControlName="a{{i}}Comentario"
+                name="a{{i}}Comentario"
+                ></ion-textarea>
+              </ion-col>
             </ion-row>
-            <ion-row>
+            <ion-row class="formItem">
               <ion-button
                 expand="block"
                 fill="outline"
@@ -178,6 +188,13 @@
                   <ion-icon name="happy" slot="end"></ion-icon>
                 </ion-range>
               </ion-col>
+              <ion-col>
+                <ion-textarea 
+                placeholder="Escriba aquí algún comentario con respecto al atributo"
+                [autoGrow]="true"
+                ></ion-textarea>
+              </ion-col>
+
             </ion-row>
             <ion-row>
               <ion-button

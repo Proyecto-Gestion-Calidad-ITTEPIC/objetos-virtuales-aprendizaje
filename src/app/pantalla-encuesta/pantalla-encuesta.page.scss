@@ -42,3 +42,16 @@ ion-grid{
   ion-card-title,ion-card-subtitle{
     color: #002e6b;
   }
+  ion-label{
+    max-width: none !important;
+  }
+  ion-textarea{
+    border-radius: 5px;
+    --placeholder-color: #002e6b;
+     --color: #002e6b;
+     outline: thick double;
+     outline-offset: 10px;
+  }
+  .formItem{
+    margin-top: 5%;
+  }
