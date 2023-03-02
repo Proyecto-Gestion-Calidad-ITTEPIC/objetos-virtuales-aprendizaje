@@ -40,6 +40,11 @@
         <ion-row *ngIf="this.encData">
           <ion-item>Tipo: {{this.encData.tipo}}</ion-item>
           <ion-item>Email: {{this.encData.email}}</ion-item>
+          <ion-list *ngIf="this.encData.com">
+            <ion-row *ngFor="let c of this.encData.com">
+              <ion-item>{{c}}</ion-item>
+            </ion-row>
+          </ion-list>
         </ion-row>
       </ion-col>
     </ion-row>

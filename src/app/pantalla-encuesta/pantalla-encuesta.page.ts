@@ -175,11 +175,18 @@ export class PantallaEncuestaPage implements OnInit {
        
     }else{ 
        prefix = 'objetivo_'
+       let prefixc = 'o'
+       let postfixc = 'Comentario'
        for ( let i = 0; i < this.objetivosISC.length; i++) {
         //Generate form fields dynamically and add to results
         //console.log(prefix+i)
         //console.log(this.formAtributos.get(prefix+i).value)
         resultados.push(this.formObjetivos.get(prefix+i).value)
+        if ( this.formObjetivos.get(prefixc+i+postfixc).value == ''){
+          comentarios.push('No hubo comentarios para este objetivo')
+        }else{
+          comentarios.push(this.formObjetivos.get(prefixc+i+postfixc).value)
+        }
        }
        email = this.formObjetivos.get('email').value
 

@@ -1,4 +1,4 @@
-import { timeout } from 'rxjs';
+import { timeout, map } from 'rxjs';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import * as SimpleS from 'simple-statistics';
@@ -122,11 +122,23 @@ export class Tab2Page implements OnInit {
   }
 
   public updateData(src: Encuesta){
-    //console.log('en updateData')
+    console.log(src.com)
+    let prefix = 'Objetivo '
+    let lista = undefined
+    if (src.com){
+      if (src.tipo.charAt(0)==='A'){
+        prefix = 'Atributo '
+      }
+      lista =structuredClone(src.com)
+      lista = lista.map((comentario, index) => comentario = prefix + (index + 1) + " : " +comentario )
+      console.log(lista)
+    }
+
+    
     this.encData = {
       tipo: src.tipo,
-      email: src.email
-
+      email: src.email,
+      com: lista? lista : undefined
     }
     if ( src.id === 'z6wnu3zu2LExQ4WZ4mg4'){
       this.encData.email = 'dart'
