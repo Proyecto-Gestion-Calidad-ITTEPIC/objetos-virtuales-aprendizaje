@@ -134,10 +134,9 @@ export class Tab2Page implements OnInit {
       console.log(lista)
     }
 
-    
     this.encData = {
       tipo: src.tipo,
-      email: src.email,
+      email: src.email===''?'anónimo':src.email,
       com: lista? lista : undefined
     }
     if ( src.id === 'z6wnu3zu2LExQ4WZ4mg4'){
