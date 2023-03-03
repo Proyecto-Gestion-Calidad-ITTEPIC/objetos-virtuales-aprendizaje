@@ -190,8 +190,11 @@
               </ion-col>
               <ion-col>
                 <ion-textarea 
-                placeholder="Escriba aquí algún comentario con respecto al atributo"
+                placeholder="Escriba aquí algún comentario con respecto al objetivo {{i+1}} (opcional)"
                 [autoGrow]="true"
+                formControlName="o{{i}}Comentario"
+                name="o{{i}}Comentario"
+
                 ></ion-textarea>
               </ion-col>
 

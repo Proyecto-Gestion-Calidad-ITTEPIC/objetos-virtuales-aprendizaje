@@ -151,12 +151,13 @@ export class PantallaEncuestaPage implements OnInit {
     let comentarios = []
     let email = ''
     let resultados = []
-    let prefix = ''
+    let prefix = '' 
+    let postfixc = 'Comentario'
+
     //Determine form and for loop through each attribute and push to result array
     if ( tipo.includes('Atr') ) {
        prefix = 'atributo_'
        let prefixc = 'a'
-       let postfixc = 'Comentario'
        for ( let i = 0; i < this.atributosISC.length; i++) {
         //Generate form fields dynamically and add to results
         //console.log(prefix+i)
@@ -176,7 +177,6 @@ export class PantallaEncuestaPage implements OnInit {
     }else{ 
        prefix = 'objetivo_'
        let prefixc = 'o'
-       let postfixc = 'Comentario'
        for ( let i = 0; i < this.objetivosISC.length; i++) {
         //Generate form fields dynamically and add to results
         //console.log(prefix+i)

@@ -45,7 +45,7 @@ export class Tab3Page implements OnInit {
         if (e.tipo.charAt(0) === 'A'){
           console.log('Atributo')
           this.resA0.push(SimpleS.mean(e.calificaciones))
-          this.mesAtrChar.push(this.meses[e.fecha.getMonth()]+', '+e.fecha.getFullYear())
+          this.mesAtrChar.push(e.fecha.getDate()+',' +this.meses[e.fecha.getMonth()]+', '+e.fecha.getFullYear())
         }else{
           this.resB0.push(SimpleS.mean(e.calificaciones))
           this.mesObjChar.push(this.meses[e.fecha.getMonth()]+', '+e.fecha.getFullYear())
@@ -95,8 +95,10 @@ export class Tab3Page implements OnInit {
         'rgba(154, 162, 35, 0.2)',
         'rgba(53, 02, 25, 0.2)',
         'rgba(201, 203, 207, 0.2)' ],// array should have same number of elements as number of dataset
-        borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
-        borderWidth: 1
+        borderWidth: 3,
+        borderColor:'rgba(54, 162, 235, 0.2)',
+        pointBorderColor: 'rgba(255, 99, 132, 1)',
+        pointBackgroundColor: 'rgba(255, 99, 132, 0.2)'
       }]
     }, 
     options: {
@@ -127,7 +129,7 @@ export class Tab3Page implements OnInit {
               }
             };
         this.ObjChart = new Chart(this.objChart.nativeElement,{
-          type: 'bar',
+          type: 'line',
           data: {
             labels: labels ,
             datasets: [{
@@ -143,14 +145,17 @@ export class Tab3Page implements OnInit {
               'rgba(154, 162, 35, 0.2)',
               'rgba(53, 02, 25, 0.2)',
               'rgba(201, 203, 207, 0.2)' ],// array should have same number of elements as number of dataset
-              borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
-              borderWidth: 1
-            }]
+              borderWidth: 3,
+              borderColor:'rgba(54, 162, 235, 0.2)',
+              pointBorderColor: 'rgba(255, 99, 132, 1)',
+              pointBackgroundColor: 'rgba(255, 99, 132, 0.2)'
+                  }]
           }, 
           options: {
             //indexAxis: 'y',
             scales: {r: {min :-6}},
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            
           },
           plugins: [plugin]
         })
