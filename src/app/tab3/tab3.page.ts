@@ -19,6 +19,10 @@ export class Tab3Page implements OnInit {
   public meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
   public mesAtrChar = []
   public mesObjChar = []
+  public initYearAtr=0
+  public initYearObj=0
+  public finYear= new Date().getFullYear()
+  public aniosAtr = []
 
   @ViewChild('atrChart') atrChart: ElementRef;
   @ViewChild('objChart') objChart: ElementRef;
@@ -44,16 +48,30 @@ export class Tab3Page implements OnInit {
       for (let e of this.encuestasDB){
         if (e.tipo.charAt(0) === 'A'){
           console.log('Atributo')
+           if (this.resA0.length===0)  this.initYearAtr = e.fecha.getFullYear();
           this.resA0.push(SimpleS.mean(e.calificaciones))
           this.mesAtrChar.push(e.fecha.getDate()+',' +this.meses[e.fecha.getMonth()]+', '+e.fecha.getFullYear())
         }else{
+          if (this.resA0.length===0)  this.initYearObj = e.fecha.getFullYear();
           this.resB0.push(SimpleS.mean(e.calificaciones))
           this.mesObjChar.push(this.meses[e.fecha.getMonth()]+', '+e.fecha.getFullYear())
-
         }
       }
-      console.log(this.resA0)
-      console.log(this.resB0)
+      this.aniosAtr.push(this.initYearAtr)
+      let diff = this.finYear-this.initYearAtr
+      if (diff !== 0 && diff !==1){
+        for (let i = 1;i< diff; i++){
+          this.aniosAtr.push(i+this.initYearAtr)
+        }
+        
+        diff = this.finYear-this.initYearObj
+        for (let i = 1;i< diff; i++){
+          this.aniosAtr.push(i+this.initYearObj)
+        }
+
+      }
+      if (diff > 0) this.aniosAtr.push(this.finYear)
+      console.log(this.aniosAtr)
       this.createChartAtr(this.resA0,this.mesAtrChar)
       this.createChartObj(this.resB0,this.meses)
     })
@@ -161,6 +179,58 @@ export class Tab3Page implements OnInit {
         })
       }
 
+  }
+
+  public mesSelectEventAtr(event){
+    console.log(event.detail.value)
+    let data = []
+    if ( event.detail.value !== 'none'){
+      let pos = this.meses.indexOf(event.detail.value)
+      console.log('pos '+pos)
+       data = this.encuestasDB.filter((enc) => enc.fecha.getMonth() === pos && enc.tipo.charAt(0) === 'A')
+      console.log(data)
+    }else{
+       data = this.encuestasDB.filter((enc) => enc.tipo.charAt(0) === 'A')
+    }  
+        let total = this.AtrChart.data.datasets[0].data.length
+      //Borrar datos existentes
+      for (let i = 0; i < total ; i++ ){
+        this.AtrChart.data.datasets[0].data.pop()
+        this.AtrChart.data.labels.pop()
+      }
+      for (let e of data){
+        this.AtrChart.data.datasets[0].data.push(SimpleS.mean(e.calificaciones))
+        this.AtrChart.data.labels.push(e.fecha.getDate()+',' +this.meses[e.fecha.getMonth()]+', '+e.fecha.getFullYear())
+      }
+      console.log(this.AtrChart.data.datasets[0].data)
+      this.AtrChart.update()
+      
+  }
+
+  public mesSelectEventObj(event){
+    console.log(event.detail.value)
+    let data = []
+    if ( event.detail.value !== 'none'){
+      let pos = this.meses.indexOf(event.detail.value)
+      console.log('pos '+pos)
+       data = this.encuestasDB.filter((enc) => enc.fecha.getMonth() === pos && enc.tipo.charAt(0) === 'A')
+      console.log(data)
+    }else{
+       data = this.encuestasDB.filter((enc) => enc.tipo.charAt(0) === 'A')
+    }  
+        let total = this.ObjChart.data.datasets[0].data.length
+      //Borrar datos existentes
+      for (let i = 0; i < total ; i++ ){
+        this.ObjChart.data.datasets[0].data.pop()
+        this.ObjChart.data.labels.pop()
+      }
+      for (let e of data){
+        this.ObjChart.data.datasets[0].data.push(SimpleS.mean(e.calificaciones))
+        this.ObjChart.data.labels.push(e.fecha.getDate()+',' +this.meses[e.fecha.getMonth()]+', '+e.fecha.getFullYear())
+      }
+      console.log(this.ObjChart.data.datasets[0].data)
+      this.ObjChart.update()
+      
   }
 
 }

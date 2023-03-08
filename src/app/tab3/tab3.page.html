@@ -13,13 +13,42 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header></ion-card-header>
+    <ion-card-header>
+      <ion-row>
+        <ion-col>
+          <ion-select (ionChange)="mesSelectEventAtr($event)" interface="popover" placeholder="Seleccione un mes">
+            <ion-select-option value="none">Sin mes</ion-select-option>
+            <ion-select-option *ngFor="let m of meses" value={{m}} >{{m}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col>
+          <ion-select interface="popover" placeholder="Seleccione un año">
+            <ion-select-option *ngFor="let a of aniosAtr" value={{a}}>{{a}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
     <ion-card-content>
       <canvas #atrChart></canvas>
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-card-header></ion-card-header>
+    <ion-card-header>
+      <ion-row>
+        <ion-col>
+          <ion-select (ionChange)="mesSelectEventObj($event)" interface="popover" placeholder="Seleccione un mes">
+            <ion-select-option value="none">Sin mes</ion-select-option>
+            <ion-select-option *ngFor="let m of meses" value={{m}} >{{m}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col>
+          <ion-select interface="popover" placeholder="Seleccione un año">
+            <ion-select-option *ngFor="let a of aniosAtr" value={{a}}>{{a}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-header>
     <ion-card-content>
       <canvas #objChart></canvas>
     </ion-card-content>
