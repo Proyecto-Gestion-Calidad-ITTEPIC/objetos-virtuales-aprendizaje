@@ -32,9 +32,6 @@ ion-grid{
     }
   }
 
-  canvas{
-    width: 100%;
-  }
   ion-list-header,ion-card{
     background-color: #FFF;
     color:#002e6b;
@@ -54,4 +51,7 @@ ion-grid{
   }
   .formItem{
     margin-top: 5%;
+  }
+  ion-grid.empleadorGrid{
+    --ion-grid-padding: 20px;
   }

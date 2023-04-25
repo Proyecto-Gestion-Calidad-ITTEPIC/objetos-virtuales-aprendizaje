@@ -60,6 +60,10 @@
     <ion-button shape="round" (click)="irAResultados()"
       >Visualizar Resultados</ion-button
     >
+    <ion-button shape="round" (click)="irAEncuestaEmpleador()"
+    >Encuesta Empleador</ion-button
+  >
+
   </ion-item>
   <ion-accordion-group>
     <ion-accordion
@@ -205,6 +209,132 @@
                 fill="outline"
                 size="large"
                 (click)="formObjCheck()"
+                >Entregar Encuesta
+              </ion-button>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-item>
+    </ion-accordion>
+  </ion-accordion-group>
+  <ion-accordion-group>
+    <ion-accordion
+      value="fifth"
+      toggleIcon="caret-down-sharp"
+      toggleIconSlot="end"
+    >
+      <ion-item slot="header" class="accordionHeader">
+        <ion-label>Encuesta para Empleadores</ion-label>
+      </ion-item>
+      <ion-item slot="content" style="justify-content: center">
+        <form [formGroup]="formAtributos">
+          <ion-grid [fixed]="true">
+            <ion-row size-lg="6" size-md="6" size-sm="6" size="12">
+              <ion-col >
+                <ion-item>
+                  <ion-label position="stacked">Correo (opcional)</ion-label>
+                  <ion-input
+                  type="email"
+                  placeholder="email@domain.com"
+                  inputmode="email"
+                  formControlName="email"
+                  ></ion-input>
+                  <ion-note slot="helper">Enter a valid email</ion-note>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Sexo
+              </ion-col>
+              <ion-col>
+                <ion-select>
+                  <ion-select-option>
+                    Hombre
+                  </ion-select-option>
+                  <ion-select-option>
+                    Mujer
+                  </ion-select-option>
+                </ion-select>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Indique zone
+              </ion-col>
+              <ion-col>
+                <ion-select>
+                  <ion-select-option>Nayarit</ion-select-option>
+                  <ion-select-option>Morelos</ion-select-option>
+                  <ion-select-option>Hidalgo</ion-select-option>
+                  <ion-select-option></ion-select-option>
+                  <ion-select-option></ion-select-option>
+                  <ion-select-option></ion-select-option>
+                  <ion-select-option></ion-select-option>
+                </ion-select>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              Seleccionar area
+            </ion-row>
+            <ion-list>
+              <ion-radio-group>                
+                <ion-item>
+                  <ion-label>Aeronautica</ion-label>
+                  <ion-radio slot="start" value="Aeronautica"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Aeronautica2</ion-label>
+                  <ion-radio slot="start" value="Aeronautica2"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Otro</ion-label>
+                  <ion-radio slot="start" value="otro"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-textarea id="txtAreaOtro"></ion-textarea>
+                </ion-item>
+              </ion-radio-group>
+              </ion-list> 
+            <ion-row>
+              Sentimientos
+            </ion-row>
+            <ion-row>
+              <ion-grid class="empleadorGrid">
+                <ion-radio-group>
+                  <ion-row>
+                    <ion-col></ion-col>
+                    <ion-col>Muy Insatisfecho</ion-col>
+                    <ion-col>Insatisfecho</ion-col>
+                  <ion-col>Moderadamente Satisfecho</ion-col>
+                  <ion-col>Satisfecho</ion-col>
+                  <ion-col>Muy Satisfecho</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col >
+                    <ion-text>
+                      Aplica los conocimientos 
+                    generales de la carrera
+                    en la práctica del
+                    desempeño profesional
+                    </ion-text>
+                  </ion-col>
+                    <ion-col><ion-radio></ion-radio></ion-col>
+                    <ion-col><ion-radio></ion-radio></ion-col>
+                    <ion-col><ion-radio></ion-radio></ion-col>
+                    <ion-col><ion-radio></ion-radio></ion-col>
+                    <ion-col><ion-radio></ion-radio></ion-col>
+                    
+                  </ion-row>
+                </ion-radio-group>
+              </ion-grid>
+            </ion-row>
+
+            <ion-row class="formItem">
+              <ion-button
+                expand="block"
+                fill="outline"
+                size="large"
                 >Entregar Encuesta
               </ion-button>
             </ion-row>

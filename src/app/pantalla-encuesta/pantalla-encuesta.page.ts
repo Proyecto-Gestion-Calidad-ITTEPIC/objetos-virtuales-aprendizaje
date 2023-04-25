@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
 export class PantallaEncuestaPage implements OnInit {
   public formAtributos : FormGroup;
   public formObjetivos : FormGroup;
+  public formEmpleadores : FormGroup;
   public encuestaP: Encuesta
   public loggedUser;
   public hoy: Date;
@@ -93,6 +94,26 @@ export class PantallaEncuestaPage implements OnInit {
         Validators.pattern(new RegExp(/^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/))
       ])]
     });
+    this.formEmpleadores = this.fb.group({
+      email:'',
+      sexo:'Hombre', //1
+      zona:'', //2
+      areaLaboral:'', //3
+      satisfaccionCompetencias:[], //4, elaborar más para cada radioopcion
+      competencia1:0,
+      competencia2:0,
+      competencia3:0,
+      competencia4:0,
+      competencia5:0,
+      competencia6:0,
+      competencia7:0,
+      competencia8:0,
+      competencia9:0,
+      debilidadesComentarios:'', //pregunta 5
+      gradoPertinenciaModelo:0,
+      gradoSatisfaccion:0,
+      comentarioFortalezas:''
+    });
   }
 
   public sliderChange(val:number){
@@ -155,6 +176,7 @@ export class PantallaEncuestaPage implements OnInit {
     let postfixc = 'Comentario'
 
     //Determine form and for loop through each attribute and push to result array
+
     if ( tipo.includes('Atr') ) {
        prefix = 'atributo_'
        let prefixc = 'a'
@@ -217,6 +239,10 @@ export class PantallaEncuestaPage implements OnInit {
 
   public irAResultados(){
     this.router.navigate(['/tabs'],{});
+
+  }
+  public irAEncuestaEmpleador(){
+    this.router.navigate(['/encuesta-empleador'],{});
 
   }
 

@@ -183,7 +183,7 @@ export class Tab1Page implements OnInit {
   }
 
   public updateChart(tipo: boolean = false, metodo: number = 0){
-    /*Metodos: 0= mean, 1= mode, 2= median */
+    /*Metodos: 0= mean, 1= mode, 2= median, 3 = Standard deviation */
     if (tipo){
       let total = this.ObjChart.data.datasets[0].data.length
       for ( let i = 0; i < total ; i++) {

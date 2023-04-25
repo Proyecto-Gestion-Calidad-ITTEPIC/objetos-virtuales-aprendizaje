@@ -25,11 +25,11 @@ export class MateriaServiceService {
       })
     }));
   }
-  
+  /*Unused*/
   public getMateriaById(id: string){
     return this.firestore.collection('materias').doc(id).valueChanges();
   }
-
+  /*Unused*/
   public getMateriaByNombre(n: string){
     return this.firestore.collection('materias',ref => ref.where('nombre','==',n)).valueChanges()
   }
