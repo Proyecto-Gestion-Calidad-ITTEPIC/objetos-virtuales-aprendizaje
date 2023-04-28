@@ -1,9 +1,341 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>encuesta-empleador</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="padding-inline: 0px">
+      <img src="../../assets/icon/bitmap.svg" height="50px" width="50px" />
+      Encuesta para Empleadores
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item style="justify-content: center">
+    <form [formGroup]="formEmpleadores">
+      <ion-grid [fixed]="true">
+        <ion-row size-lg="6" size-md="6" size-sm="6" size="12">
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Correo (opcional)</ion-label>
+              <ion-input
+                type="email"
+                placeholder="email@domain.com"
+                inputmode="email"
+                formControlName="email"
+              ></ion-input>
+              <ion-note slot="helper">Enter a valid email</ion-note>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-label> Sexo </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-select placeholder="Seleccionar género" >
+                <ion-select-option> Hombre </ion-select-option>
+                <ion-select-option> Mujer </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row> Indique zone </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-select placeholder="Indicar zona de operaciones">
+                <ion-select-option>Nayarit</ion-select-option>
+                <ion-select-option>Morelos</ion-select-option>
+                <ion-select-option>Hidalgo</ion-select-option>
+                <ion-select-option></ion-select-option>
+                <ion-select-option></ion-select-option>
+                <ion-select-option></ion-select-option>
+                <ion-select-option></ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row> Seleccionar area </ion-row>
+        <ion-list>
+          <ion-radio-group>
+            <ion-item>
+              <ion-label>Aeronautica</ion-label>
+              <ion-radio slot="start" value="Aeronautica"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Agroindustrial</ion-label>
+              <ion-radio slot="start" value="Agroindustrial"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Automotriz</ion-label>
+              <ion-radio slot="start" value="Automotriz"></ion-radio>
+            </ion-item>
 
+            <ion-item>
+              <ion-label>Energético</ion-label>
+              <ion-radio slot="start" value="Energético"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Tecnologías de la Información o Sistemas Computacionales</ion-label>
+              <ion-radio slot="start" value="Sistemas"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ambiental</ion-label>
+              <ion-radio slot="start" value="Ambiental"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Administración de empresa u organizaciones</ion-label>
+              <ion-radio slot="start" value="Admin"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Industria de la construcción</ion-label>
+              <ion-radio slot="start" value="Contruccion"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Otro</ion-label>
+              <ion-radio slot="start" value="otro"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-textarea id="txtAreaOtro"></ion-textarea>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <ion-row> Sentimientos </ion-row>
+        <ion-row>
+          <ion-grid class="empleadorGrid">
+            <ion-radio-group>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col>Muy Insatisfecho</ion-col>
+                <ion-col>Insatisfecho</ion-col>
+                <ion-col>Moderadamente Satisfecho</ion-col>
+                <ion-col>Satisfecho</ion-col>
+                <ion-col>Muy Satisfecho</ion-col>
+              </ion-row>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Aplica los conocimientos generales de la carrera en la
+                      práctica del desempeño profesional
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Posee la capacidad para diseñar, organizar, planificar y
+                      gestionar proyectos que permitan el desarrollo
+                      empresarial/Tecnológico
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Cuenta con la capacidad de trabajar en equipo para el
+                      desarrollo de proyectos dentro de la empresa.
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Cuenta con la capacidad de trabajar en equipo para el
+                      desarrollo de proyectos dentro de la empresa.
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Toma decisiones de manera efectiva para mejorar procesos y
+                      aumentar la productividad en la empresa.
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Asume compromiso ético con la sociedad en el desempeño de
+                      sus funciones.
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Demuestra habilidad para ejercer el liderazgo en el
+                      trabajo colaborativo
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Mantiene un compromiso hacia la empresa y grabadores, en
+                      busca de lograr metas, más allá de la relación laboral
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Actitud emprendedora para generar nuevos esquemas de
+                      negocios
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group>
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Actitud emprendedora para generar nuevos esquemas de
+                      negocios
+                    </ion-text>
+                  </ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col><ion-radio></ion-radio></ion-col>
+                </ion-row>
+              </ion-radio-group>
+            </ion-radio-group>
+          </ion-grid>
+        </ion-row>
+
+        <ion-row>
+          Según tu opinión, indícanos qué contenidos, conocimientos, habilidades
+          o actitudes consideras que faltó en la formación profesional de tus
+          empleados, o lo que debería agregar en los programas de estudio de
+          egresados que contratas y que les permitiría mejorar su desempeño
+          profesional La información proporcionada es de carácter confidencial y
+          será de gran utilidad para la creación de un nuevo modelo educativo
+          para el Tecnológico Nacional de México.
+        </ion-row>
+        <ion-row>
+          <ion-textarea></ion-textarea>
+        </ion-row>
+        <ion-row> Grado de Pertinencia </ion-row>
+        <ion-grid>
+          <ion-radio-group>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col>Nada Pertinente</ion-col>
+              <ion-col>Poco Pertinente</ion-col>
+              <ion-col>Neutral</ion-col>
+              <ion-col>Pertinente</ion-col>
+              <ion-col>Muy Pertinente</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>Grado de Pertinencia</ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+            </ion-row>
+          </ion-radio-group>
+        </ion-grid>
+        <ion-row> Grado de Satisfaccion </ion-row>
+        <ion-grid>
+          <ion-radio-group>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col>Muy Insatisfecho</ion-col>
+              <ion-col>Insatisfecho</ion-col>
+              <ion-col>Neutral</ion-col>
+              <ion-col>Satisfecho</ion-col>
+              <ion-col>Muy Satisfecho</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>Grado de Satisfaccion</ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+              <ion-col><ion-radio></ion-radio></ion-col>
+            </ion-row>
+          </ion-radio-group>
+        </ion-grid>
+
+        <ion-row class="formItem">
+          <ion-button expand="block" fill="outline" size="large"
+            >Entregar Encuesta
+          </ion-button>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-item>
 </ion-content>
