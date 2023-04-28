@@ -17,25 +17,35 @@ export class EncuestaEmpleadorPage implements OnInit {
   ngOnInit() {
     this.formEmpleadores = this.fb.group({
       email:'',
-      sexo:'Hombre', //1
+      sexo:'H', //1
       zona:'', //2
       areaLaboral:'', //3
+      areaOtra:'',
       satisfaccionCompetencias:[], //4, elaborar más para cada radioopcion
-      competencia1:0,
-      competencia2:0,
-      competencia3:0,
-      competencia4:0,
-      competencia5:0,
-      competencia6:0,
-      competencia7:0,
-      competencia8:0,
-      competencia9:0,
+      competencia1:'',
+      competencia2:'',
+      competencia3:'',
+      competencia4:'',
+      competencia5:'',
+      competencia6:'',
+      competencia7:'',
+      competencia8:'',
+      competencia9:'',
+      competencia10:'',
       debilidadesComentarios:'', //pregunta 5
-      gradoPertinenciaModelo:0,
-      gradoSatisfaccion:0,
+      gradoPertinenciaModelo:'',
+      gradoSatisfaccion:'',
       comentarioFortalezas:''
     });
 
+  }
+
+  checkEncuesta(){
+    console.log(this.formEmpleadores.get('competencia1').value);
+    if (this.formEmpleadores.get('areaLaboral').value==='otro') {
+      console.log(this.formEmpleadores.get('areaOtra').value)
+    }
+    
   }
 
 }

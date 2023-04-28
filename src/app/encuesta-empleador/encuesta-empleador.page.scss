@@ -3,10 +3,15 @@ ion-alert.div{
 }
 ion-select{    
         color: #002e6b !important;
+        text-align: center;
         label{
             opacity: 1 !important;
         }
 }
 ion-list{
     --color-hover: #002e6b;
+}
+ion-textarea{
+    background: #f6f6f6;
+    border-radius: 5px;
 }
