@@ -29,12 +29,15 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-label> Sexo </ion-label>
+          <ion-label> ¿Cuál es tu sexo? </ion-label>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-select placeholder="Seleccionar género" formControlName="sexo">
+              <ion-select
+                placeholder="Seleccionar género"
+                formControlName="sexo"
+              >
                 <ion-select-option value="H"> Hombre </ion-select-option>
                 <ion-select-option value="M"> Mujer </ion-select-option>
               </ion-select>
@@ -44,11 +47,18 @@
           <ion-col></ion-col>
           <ion-col></ion-col>
         </ion-row>
-        <ion-row> Indique zone </ion-row>
+        <ion-row>
+          <ion-label>
+            Indica en qué zona geográfica del país se encuentra ubicada tu empresa
+          </ion-label>
+          </ion-row>
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-select placeholder="Indicar zona de operaciones" formControlName="zona">
+              <ion-select
+                placeholder="Indicar zona de operaciones"
+                formControlName="zona"
+              >
                 <ion-select-option>Nayarit</ion-select-option>
                 <ion-select-option>Morelos</ion-select-option>
                 <ion-select-option>Hidalgo</ion-select-option>
@@ -63,7 +73,7 @@
           <ion-col></ion-col>
           <ion-col></ion-col>
         </ion-row>
-        <ion-row> Seleccionar area </ion-row>
+        <ion-row> <ion-label>Indica el área laboral en la que tienes tu actividad económica</ion-label> </ion-row>
         <ion-list>
           <ion-radio-group formControlName="areaLaboral">
             <ion-item>
@@ -84,7 +94,10 @@
               <ion-radio slot="start" value="Energético"></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-label>Tecnologías de la Información o Sistemas Computacionales</ion-label>
+              <ion-label
+                >Tecnologías de la Información o Sistemas
+                Computacionales</ion-label
+              >
               <ion-radio slot="start" value="Sistemas"></ion-radio>
             </ion-item>
             <ion-item>
@@ -100,25 +113,31 @@
               <ion-radio slot="start" value="Contruccion"></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-label>Otro</ion-label>
+              <ion-label>Otro (especifique en texto)</ion-label>
               <ion-radio slot="start" value="otro"></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-textarea id="txtAreaOtro" formControlName="areaOtra" placeholder="Escriba aquí su área de profesión"></ion-textarea>
+              <ion-textarea
+                id="txtAreaOtro"
+                formControlName="areaOtra"
+                placeholder="Escriba aquí su área de profesión"
+              ></ion-textarea>
             </ion-item>
           </ion-radio-group>
         </ion-list>
-        <ion-row> Sentimientos </ion-row>
+        <ion-row> <ion-label class="ion-text-wrap"> Indica tu nivel de satisfacción respecto a las siguientes competencias genéricas,
+          considerando que efectivamente tus empleados egresados de un Instituto Tecnológico las
+          aplican en su desempeño profesional </ion-label></ion-row>
         <ion-row>
           <ion-grid class="empleadorGrid">
             <ion-radio-group>
               <ion-row>
                 <ion-col></ion-col>
-                <ion-col>Muy Insatisfecho</ion-col>
-                <ion-col>Insatisfecho</ion-col>
-                <ion-col>Moderadamente Satisfecho</ion-col>
-                <ion-col>Satisfecho</ion-col>
-                <ion-col>Muy Satisfecho</ion-col>
+                <ion-col><ion-text>Muy Insatisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Insatisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Moderadamente Satisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Satisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Muy Satisfecho</ion-text></ion-col>
               </ion-row>
               <ion-radio-group formControlName="competencia1">
                 <ion-row>
@@ -128,11 +147,19 @@
                       práctica del desempeño profesional
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia2">
@@ -144,11 +171,19 @@
                       empresarial/Tecnológico
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia3">
@@ -159,11 +194,19 @@
                       desarrollo de proyectos dentro de la empresa.
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia4">
@@ -174,11 +217,19 @@
                       desarrollo de proyectos dentro de la empresa.
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia5">
@@ -204,11 +255,19 @@
                       sus funciones.
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia7">
@@ -219,11 +278,19 @@
                       trabajo colaborativo
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia8">
@@ -234,11 +301,19 @@
                       busca de lograr metas, más allá de la relación laboral
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia9">
@@ -249,11 +324,19 @@
                       negocios
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia10">
@@ -264,11 +347,19 @@
                       negocios
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Moderadamente Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
                   <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
-                  <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
             </ion-radio-group>
@@ -276,52 +367,61 @@
         </ion-row>
 
         <ion-row>
-          Según tu opinión, indícanos qué contenidos, conocimientos, habilidades
-          o actitudes consideras que faltó en la formación profesional de tus
-          empleados, o lo que debería agregar en los programas de estudio de
-          egresados que contratas y que les permitiría mejorar su desempeño
-          profesional La información proporcionada es de carácter confidencial y
-          será de gran utilidad para la creación de un nuevo modelo educativo
-          para el Tecnológico Nacional de México.
+          <ion-label class="ion-text-wrap">
+
+            Según tu opinión, indícanos qué contenidos, conocimientos, habilidades
+            o actitudes consideras que faltó en la formación profesional de tus
+            empleados, o lo que debería agregar en los programas de estudio de
+            egresados que contratas y que les permitiría mejorar su desempeño
+            profesional. <br>  La información proporcionada es de carácter confidencial y
+            será de gran utilidad para la creación de un nuevo modelo educativo
+            para el Tecnológico Nacional de México.
+          </ion-label>
         </ion-row>
         <ion-row>
-          <ion-textarea></ion-textarea>
+          <ion-textarea formControlName="debilidadesComentarios" placeholder="Escribir aquí"></ion-textarea>
         </ion-row>
-        <ion-row> Grado de Pertinencia </ion-row>
+        <ion-row> <ion-label class="ion-text-wrap"> En general, califica el grado de pertinencia que tiene el modelo educativo: Formación y
+          desarrollo de competencias profesionales, según el desempeño profesional de los egresados
+          de un instituto tecnológico.</ion-label> </ion-row>
         <ion-grid>
           <ion-radio-group formControlName="gradoPertinenciaModelo">
             <ion-row>
               <ion-col></ion-col>
-              <ion-col>Nada Pertinente</ion-col>
-              <ion-col>Poco Pertinente</ion-col>
-              <ion-col>Neutral</ion-col>
-              <ion-col>Pertinente</ion-col>
-              <ion-col>Muy Pertinente</ion-col>
+              <ion-col> <ion-text>Nada Pertinente</ion-text></ion-col>
+              <ion-col><ion-text>Poco Pertinente</ion-text></ion-col>
+              <ion-col><ion-text>Neutral</ion-text></ion-col>
+              <ion-col><ion-text>Pertinente</ion-text></ion-col>
+              <ion-col><ion-text>Muy Pertinente</ion-text></ion-col>
             </ion-row>
             <ion-row>
-              <ion-col>Grado de Pertinencia</ion-col>
+              <ion-col><ion-text>Grado de Pertinencia</ion-text></ion-col>
               <ion-col><ion-radio value="Nada Pertinente"></ion-radio></ion-col>
               <ion-col><ion-radio value="Poco Pertinente"></ion-radio></ion-col>
               <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
               <ion-col><ion-radio value="Pertinente"></ion-radio></ion-col>
               <ion-col><ion-radio value="Muy Pertinente"></ion-radio></ion-col>
-        </ion-row>
+            </ion-row>
           </ion-radio-group>
         </ion-grid>
-        <ion-row> Grado de Satisfaccion </ion-row>
+        <ion-row> <ion-label class="ion-text-wrap">En general, califica el grado de satisfacción que tienes sobre el modelo educativo:
+          Formación y desarrollo de competencias profesionales, según el desempeño profesional de tu
+          personal egresado de un instituto tecnológico </ion-label></ion-row>
         <ion-grid>
-          <ion-radio-group>
+          <ion-radio-group formControlName="gradoSatisfaccion">
             <ion-row>
               <ion-col></ion-col>
-              <ion-col>Muy Insatisfecho</ion-col>
-              <ion-col>Insatisfecho</ion-col>
-              <ion-col>Neutral</ion-col>
-              <ion-col>Satisfecho</ion-col>
-              <ion-col>Muy Satisfecho</ion-col>
+              <ion-col><ion-text>Muy Insatisfecho</ion-text></ion-col>
+              <ion-col><ion-text>Insatisfecho</ion-text></ion-col>
+              <ion-col><ion-text>Neutral</ion-text></ion-col>
+              <ion-col><ion-text>Satisfecho</ion-text></ion-col>
+              <ion-col><ion-text>Muy Satisfecho</ion-text></ion-col>
             </ion-row>
             <ion-row>
-              <ion-col>Grado de Satisfaccion</ion-col>
-              <ion-col><ion-radio value="Muy Insatisfecho"></ion-radio></ion-col>
+              <ion-col><ion-text>Grado de Satisfaccion</ion-text></ion-col>
+              <ion-col
+                ><ion-radio value="Muy Insatisfecho"></ion-radio
+              ></ion-col>
               <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
               <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
               <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
@@ -330,9 +430,24 @@
           </ion-radio-group>
         </ion-grid>
 
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+
+          Según tu opinión, indica las fortalezas y habilidades que tienen los
+          egresados de un instituto tecnológico, que los hace competitivos y
+          confiables. <br />
+          Gracias por tu colaboración.
+          </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-textarea formControlName="comentarioFortalezas" placeholder="Escribir aquí"></ion-textarea>
+        </ion-row>
         <ion-row class="formItem">
-          <ion-button expand="block" fill="outline" size="large"
-          (click)="checkEncuesta()"
+          <ion-button
+            expand="block"
+            fill="outline"
+            size="large"
+            (click)="checkEncuesta()"
             >Entregar Encuesta
           </ion-button>
         </ion-row>
