@@ -1,6 +1,7 @@
-ion-alert.div{
-    background-color: #FFF;
+.sc-ion-alert-md-h{
+        --ion-background-color: #FFF !important;
 }
+
 ion-select{    
         color: #002e6b !important;
         text-align: center;
@@ -24,19 +25,31 @@ ion-row{
         }
     }
     padding: 8px;
+    
     ion-label{
         font-size: 20px;
         max-width: fit-content;
+
     }
+    
 }
 ion-label{
     padding: 10px;
+    
 }
 ion-item{
+    --background-focused: #FFF;
     ion-label{
         max-width: fit-content;
+    }
+    ion-row.md .hydrated{
+        --color:var(--color-hover);
+        ion-label{
+        }
     }
 }
 ion-text{
     font-size: 18px;
 }
+
+

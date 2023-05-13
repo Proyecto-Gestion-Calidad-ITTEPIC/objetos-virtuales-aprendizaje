@@ -29,7 +29,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-label> ¿Cuál es tu sexo? </ion-label>
+          <ion-label class="nonhover"> ¿Cuál es tu sexo? </ion-label>
         </ion-row>
         <ion-row>
           <ion-col>
@@ -49,9 +49,10 @@
         </ion-row>
         <ion-row>
           <ion-label>
-            Indica en qué zona geográfica del país se encuentra ubicada tu empresa
+            Indica en qué zona geográfica del país se encuentra ubicada tu
+            empresa
           </ion-label>
-          </ion-row>
+        </ion-row>
         <ion-row>
           <ion-col>
             <ion-item>
@@ -59,13 +60,37 @@
                 placeholder="Indicar zona de operaciones"
                 formControlName="zona"
               >
-                <ion-select-option>Nayarit</ion-select-option>
-                <ion-select-option>Morelos</ion-select-option>
+                <ion-select-option>Aguascalientes</ion-select-option>
+                <ion-select-option>Baja California</ion-select-option>
+                <ion-select-option>Baja California Sur</ion-select-option>
+                <ion-select-option>Campeche</ion-select-option>
+                <ion-select-option>Chiapas</ion-select-option>
+                <ion-select-option>Chihuahua</ion-select-option>
+                <ion-select-option>Coahuila</ion-select-option>
+                <ion-select-option>Colima</ion-select-option>
+                <ion-select-option>Durango</ion-select-option>
+                <ion-select-option>Guanajuato</ion-select-option>
+                <ion-select-option>Guerrero</ion-select-option>
                 <ion-select-option>Hidalgo</ion-select-option>
-                <ion-select-option></ion-select-option>
-                <ion-select-option></ion-select-option>
-                <ion-select-option></ion-select-option>
-                <ion-select-option></ion-select-option>
+                <ion-select-option>Jalisco</ion-select-option>
+                <ion-select-option>Estado de México</ion-select-option>
+                <ion-select-option>Michoacán</ion-select-option>
+                <ion-select-option>Morelos</ion-select-option>
+                <ion-select-option>Nayarit</ion-select-option>
+                <ion-select-option>Nuevo León</ion-select-option>
+                <ion-select-option>Oaxaca</ion-select-option>
+                <ion-select-option>Puebla</ion-select-option>
+                <ion-select-option>Querétaro</ion-select-option>
+                <ion-select-option>Quintana Roo</ion-select-option>
+                <ion-select-option>San Luis Potosí</ion-select-option>
+                <ion-select-option>Sinaloa</ion-select-option>
+                <ion-select-option>Sonora</ion-select-option>
+                <ion-select-option>Tabasco</ion-select-option>
+                <ion-select-option>Tamaulipas</ion-select-option>
+                <ion-select-option>Tlaxcala</ion-select-option>
+                <ion-select-option>Veracruz</ion-select-option>
+                <ion-select-option>Yucatán</ion-select-option>
+                <ion-select-option>Zacatecas</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-col>
@@ -73,7 +98,12 @@
           <ion-col></ion-col>
           <ion-col></ion-col>
         </ion-row>
-        <ion-row> <ion-label>Indica el área laboral en la que tienes tu actividad económica</ion-label> </ion-row>
+        <ion-row>
+          <ion-label
+            >Indica el área laboral en la que tienes tu actividad
+            económica</ion-label
+          >
+        </ion-row>
         <ion-list>
           <ion-radio-group formControlName="areaLaboral">
             <ion-item>
@@ -125,9 +155,14 @@
             </ion-item>
           </ion-radio-group>
         </ion-list>
-        <ion-row> <ion-label class="ion-text-wrap"> Indica tu nivel de satisfacción respecto a las siguientes competencias genéricas,
-          considerando que efectivamente tus empleados egresados de un Instituto Tecnológico las
-          aplican en su desempeño profesional </ion-label></ion-row>
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            Indica tu nivel de satisfacción respecto a las siguientes
+            competencias genéricas, considerando que efectivamente tus empleados
+            egresados de un Instituto Tecnológico las aplican en su desempeño
+            profesional
+          </ion-label></ion-row
+        >
         <ion-row>
           <ion-grid class="empleadorGrid">
             <ion-radio-group>
@@ -240,11 +275,19 @@
                       aumentar la productividad en la empresa.
                     </ion-text>
                   </ion-col>
-                  <ion-col><ion-radio></ion-radio></ion-col>
-                  <ion-col><ion-radio></ion-radio></ion-col>
-                  <ion-col><ion-radio></ion-radio></ion-col>
-                  <ion-col><ion-radio></ion-radio></ion-col>
-                  <ion-col><ion-radio></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
                 </ion-row>
               </ion-radio-group>
               <ion-radio-group formControlName="competencia6">
@@ -368,22 +411,30 @@
 
         <ion-row>
           <ion-label class="ion-text-wrap">
-
-            Según tu opinión, indícanos qué contenidos, conocimientos, habilidades
-            o actitudes consideras que faltó en la formación profesional de tus
-            empleados, o lo que debería agregar en los programas de estudio de
-            egresados que contratas y que les permitiría mejorar su desempeño
-            profesional. <br>  La información proporcionada es de carácter confidencial y
-            será de gran utilidad para la creación de un nuevo modelo educativo
-            para el Tecnológico Nacional de México.
+            Según tu opinión, indícanos qué contenidos, conocimientos,
+            habilidades o actitudes consideras que faltó en la formación
+            profesional de tus empleados, o lo que debería agregar en los
+            programas de estudio de egresados que contratas y que les permitiría
+            mejorar su desempeño profesional. <br />
+            La información proporcionada es de carácter confidencial y será de
+            gran utilidad para la creación de un nuevo modelo educativo para el
+            Tecnológico Nacional de México.
           </ion-label>
         </ion-row>
         <ion-row>
-          <ion-textarea formControlName="debilidadesComentarios" placeholder="Escribir aquí"></ion-textarea>
+          <ion-textarea
+            formControlName="debilidadesComentarios"
+            placeholder="Escribir aquí"
+          ></ion-textarea>
         </ion-row>
-        <ion-row> <ion-label class="ion-text-wrap"> En general, califica el grado de pertinencia que tiene el modelo educativo: Formación y
-          desarrollo de competencias profesionales, según el desempeño profesional de los egresados
-          de un instituto tecnológico.</ion-label> </ion-row>
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            En general, califica el grado de pertinencia que tiene el modelo
+            educativo: Formación y desarrollo de competencias profesionales,
+            según el desempeño profesional de los egresados de un instituto
+            tecnológico.</ion-label
+          >
+        </ion-row>
         <ion-grid>
           <ion-radio-group formControlName="gradoPertinenciaModelo">
             <ion-row>
@@ -404,9 +455,14 @@
             </ion-row>
           </ion-radio-group>
         </ion-grid>
-        <ion-row> <ion-label class="ion-text-wrap">En general, califica el grado de satisfacción que tienes sobre el modelo educativo:
-          Formación y desarrollo de competencias profesionales, según el desempeño profesional de tu
-          personal egresado de un instituto tecnológico </ion-label></ion-row>
+        <ion-row>
+          <ion-label class="ion-text-wrap"
+            >En general, califica el grado de satisfacción que tienes sobre el
+            modelo educativo: Formación y desarrollo de competencias
+            profesionales, según el desempeño profesional de tu personal
+            egresado de un instituto tecnológico
+          </ion-label></ion-row
+        >
         <ion-grid>
           <ion-radio-group formControlName="gradoSatisfaccion">
             <ion-row>
@@ -432,15 +488,17 @@
 
         <ion-row>
           <ion-label class="ion-text-wrap">
-
-          Según tu opinión, indica las fortalezas y habilidades que tienen los
-          egresados de un instituto tecnológico, que los hace competitivos y
-          confiables. <br />
-          Gracias por tu colaboración.
+            Según tu opinión, indica las fortalezas y habilidades que tienen los
+            egresados de un instituto tecnológico, que los hace competitivos y
+            confiables. <br />
+            Gracias por tu colaboración.
           </ion-label>
         </ion-row>
         <ion-row>
-          <ion-textarea formControlName="comentarioFortalezas" placeholder="Escribir aquí"></ion-textarea>
+          <ion-textarea
+            formControlName="comentarioFortalezas"
+            placeholder="Escribir aquí"
+          ></ion-textarea>
         </ion-row>
         <ion-row class="formItem">
           <ion-button

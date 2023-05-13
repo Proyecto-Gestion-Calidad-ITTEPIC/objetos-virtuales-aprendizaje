@@ -28,7 +28,7 @@
 ion-toolbar {
     --background: #fff;
     --color: white;
-  
+
     --border-color: #272727;
     //--border-width: 4px 0;
     //--border-style: double;
@@ -55,7 +55,11 @@ ion-toolbar {
       color: #002e6b;
       --background:#FFF;
       --color-hover:#014092;
-
+      ion-row{
+        ion-label{
+          --color-focused: #014092;
+        }
+      }
     }
     .accordionHeader{
       --color-hover:#014092;
@@ -96,4 +100,12 @@ ion-tab-bar,ion-tab-button,ion-item-divider{
   .alert-title.sc-ion-alert-md,.alert-sub-title.sc-ion-alert-md{
     color:#002e6b ;
   }
+}
+ion-alert{
+  --ion-background-color: #FFF;
+  div.alert-radio-label.sc-ion-alert-md,[aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md{
+
+    color:#002e6b;
+  }
+
 }
