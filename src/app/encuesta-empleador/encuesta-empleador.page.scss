@@ -1,6 +1,10 @@
 .sc-ion-alert-md-h{
         --ion-background-color: #FFF !important;
 }
+ion-content{
+    --color-focused: none !important;
+
+}
 
 ion-select{    
         color: #002e6b !important;
@@ -9,9 +13,8 @@ ion-select{
             opacity: 1 !important;
         }
 }
-ion-list{
-    --color-hover: #002e6b;
-
+ion-label.sc-ion-label-md-h .sc-ion-label-md-s .md .hydrated{
+        --color-focused: none !important;
 }
 ion-textarea{
     background: #f6f6f6;
@@ -39,6 +42,7 @@ ion-label{
 }
 ion-item{
     --background-focused: #FFF;
+    --color-focused:none;
     ion-label{
         max-width: fit-content;
     }
@@ -50,6 +54,9 @@ ion-item{
 }
 ion-text{
     font-size: 18px;
+    --color-focused: none !important;
+
 }
+
 
 

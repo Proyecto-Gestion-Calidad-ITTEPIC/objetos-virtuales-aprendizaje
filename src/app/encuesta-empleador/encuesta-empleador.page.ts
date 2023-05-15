@@ -12,7 +12,7 @@ import { AlertController } from '@ionic/angular';
 export class EncuestaEmpleadorPage implements OnInit {
   public formEmpleadores : FormGroup;
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder, private ac : AlertController) { }
 
   ngOnInit() {
     this.formEmpleadores = this.fb.group({
@@ -79,6 +79,32 @@ export class EncuestaEmpleadorPage implements OnInit {
 
   }
 
+
+  async presentAlertModal(){
+    const alert = await this.ac.create({
+      header: 'ALERTA: ENTREGA DE FORMULARIO DE EMPLEADOR',
+      subHeader: 'AVISO',
+      message: 'Por favor revise las respuestas ingresadas, se deben de contestar todas',
+      cssClass: 'encuestaModal',
+      buttons: [{
+        text:'Confirmar',
+        role:'confirm',
+        handler: () => {
+          
+        }
+      },{
+        text:'Cancelar',
+        role:'cancel',
+        handler: () => {
+          
+        }
+      }
+      ]
+
+    })
+    await alert.present();
+  }
+
   checkEncuesta(){
     console.log(this.formEmpleadores.get('email').value);
     console.log(this.formEmpleadores.get('sexo').value);
@@ -103,6 +129,10 @@ export class EncuestaEmpleadorPage implements OnInit {
       console.log(this.formEmpleadores.get('areaOtra').value)
     }
     console.log(this.formEmpleadores.valid)
+    if (!this.formEmpleadores.valid){
+      this.presentAlertModal()
+    }
   }
+
 
 }
