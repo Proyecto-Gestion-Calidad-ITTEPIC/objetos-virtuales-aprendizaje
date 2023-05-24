@@ -1,3 +1,4 @@
+import { EncuestaEmpleador } from './../models/encuesta-empleador';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Encuesta } from '../models/encuesta';
@@ -26,6 +27,11 @@ export class EncuestaService {
   //Post a poll result on the db
   public postEncuesta(encuesta:Encuesta){
     this.firestore.collection('encuestas').add(encuesta)
+  }
+
+  //Encuestas de empleador
+  public postEncuestaEmpleador(EncuestaEmpleador: EncuestaEmpleador){
+    this.firestore.collection('encuestasEmpleador').add(EncuestaEmpleador)
   }
 
 }

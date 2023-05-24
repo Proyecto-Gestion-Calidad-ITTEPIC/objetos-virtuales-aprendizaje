@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'encuesta-empleador',
     loadChildren: () => import('./encuesta-empleador/encuesta-empleador.module').then( m => m.EncuestaEmpleadorPageModule)
   },
+  {
+    path: 'encuesta-egresados',
+    loadChildren: () => import('./encuesta-egresados/encuesta-egresados.module').then( m => m.EncuestaEgresadosPageModule)
+  },
 ];
 
 @NgModule({

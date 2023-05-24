@@ -3,6 +3,7 @@ import { EncuestaService } from './../services/encuesta.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ElementRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { EncuestaEmpleador } from '../models/encuesta-empleador';
 
 @Component({
   selector: 'app-encuesta-empleador',
@@ -11,8 +12,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class EncuestaEmpleadorPage implements OnInit {
   public formEmpleadores : FormGroup;
-
-  constructor(private fb : FormBuilder, private ac : AlertController) { }
+  public encu : EncuestaEmpleador
+  constructor(private fb : FormBuilder, private ac : AlertController, private es: EncuestaService) { }
 
   ngOnInit() {
     this.formEmpleadores = this.fb.group({
@@ -106,7 +107,7 @@ export class EncuestaEmpleadorPage implements OnInit {
   }
 
   checkEncuesta(){
-    console.log(this.formEmpleadores.get('email').value);
+    /*console.log(this.formEmpleadores.get('email').value);
     console.log(this.formEmpleadores.get('sexo').value);
     console.log(this.formEmpleadores.get('zona').value);
     console.log(this.formEmpleadores.get('areaLaboral').value);
@@ -124,13 +125,48 @@ export class EncuestaEmpleadorPage implements OnInit {
     console.log(this.formEmpleadores.get('gradoPertinenciaModelo').value);
     console.log(this.formEmpleadores.get('gradoSatisfaccion').value);
     console.log(this.formEmpleadores.get('comentarioFortalezas').value);
-
     if (this.formEmpleadores.get('areaLaboral').value==='otro') {
       console.log(this.formEmpleadores.get('areaOtra').value)
     }
+    */
     console.log(this.formEmpleadores.valid)
     if (!this.formEmpleadores.valid){
       this.presentAlertModal()
+    }else{
+      let area = ''
+      if (this.formEmpleadores.get('areaLaboral').value==='otro') {
+        //console.log(this.formEmpleadores.get('areaOtra').value)
+        area = this.formEmpleadores.get('areaOtra').value
+      }else{
+        area = this.formEmpleadores.get('areaLaboral').value
+      }
+  
+      this.encu ={
+        email : this.formEmpleadores.get('email').value,
+        sexo : this.formEmpleadores.get('sexo').value,
+        zona : this.formEmpleadores.get('zona').value,
+        areaLaboral : area,
+        satisfaccionCompetencias :[
+          this.formEmpleadores.get('competencia1').value,
+          this.formEmpleadores.get('competencia2').value,
+          this.formEmpleadores.get('competencia3').value,
+          this.formEmpleadores.get('competencia4').value,
+          this.formEmpleadores.get('competencia5').value,
+          this.formEmpleadores.get('competencia6').value,
+          this.formEmpleadores.get('competencia7').value,
+          this.formEmpleadores.get('competencia8').value,
+          this.formEmpleadores.get('competencia9').value,
+          this.formEmpleadores.get('competencia10').value
+        ],
+        debilidadesComentarios: this.formEmpleadores.get('debilidadesComentarios').value,
+        gradoPertenenciaModelo: this.formEmpleadores.get('gradoPertinenciaModelo').value,
+        gradoSatisfaccion:this.formEmpleadores.get('gradoSatisfaccion').value,
+        comentarioFortalezas:this.formEmpleadores.get('comentarioFortalezas').value,
+
+
+      }
+      this.es.postEncuestaEmpleador(this.encu)
+      console.log('subida exito')
     }
   }
 

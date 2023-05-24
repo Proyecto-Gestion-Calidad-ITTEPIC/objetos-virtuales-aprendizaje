@@ -16,7 +16,6 @@ import { DatePipe } from '@angular/common';
 export class PantallaEncuestaPage implements OnInit {
   public formAtributos : FormGroup;
   public formObjetivos : FormGroup;
-  public formEmpleadores : FormGroup;
   public encuestaP: Encuesta
   public loggedUser;
   public hoy: Date;
