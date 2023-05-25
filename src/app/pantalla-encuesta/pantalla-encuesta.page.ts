@@ -224,5 +224,9 @@ export class PantallaEncuestaPage implements OnInit {
     this.router.navigate(['/encuesta-empleador'],{});
 
   }
+  public irAEncuestaEgresado(){
+    this.router.navigate(['/encuesta-egresados'],{});
+
+  }
 
 }

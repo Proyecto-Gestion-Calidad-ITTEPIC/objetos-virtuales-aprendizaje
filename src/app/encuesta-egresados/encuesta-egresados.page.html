@@ -1,9 +1,924 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>encuesta-egresados</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="padding-inline: 0px">
+      <img src="../../assets/icon/bitmap.svg" height="50px" width="50px" />
+      Encuesta para Empleadores
+    </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <ion-item style="justify-content: center">
+    <form [formGroup]="formEgresados">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-label class="">
+            ¿Conocías que el plan de estudio de tu carrera, está basado en un
+            modelo educativo que contempla la formación y el desarrollo de
+            competencias profesionales?
+          </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-select placeholder="Seleccionar una opcion">
+                <ion-select-option value="T"> Si </ion-select-option>
+                <ion-select-option value="F"> No </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-label class="nonhover"> ¿Cuál es tu sexo? </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-select placeholder="Seleccionar género">
+                <ion-select-option value="H"> Hombre </ion-select-option>
+                <ion-select-option value="M"> Mujer </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-label>¿Cuál es tu grupo de edad?</ion-label>
+        </ion-row>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>24-30</ion-label>
+            <ion-radio slot="start" value="24-30"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>30-35</ion-label>
+            <ion-radio slot="start" value="30-35"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Otro</ion-label>
+            <ion-radio slot="start" value="Otro"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-row>
+          <ion-label>
+            Indica en qué zona geográfica del país se encuentra ubicado el
+            Tecnológico del que egresaste
+          </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-select placeholder="Indicar zona de operaciones">
+                <ion-select-option>Aguascalientes</ion-select-option>
+                <ion-select-option>Baja California</ion-select-option>
+                <ion-select-option>Baja California Sur</ion-select-option>
+                <ion-select-option>Campeche</ion-select-option>
+                <ion-select-option>Chiapas</ion-select-option>
+                <ion-select-option>Chihuahua</ion-select-option>
+                <ion-select-option>Coahuila</ion-select-option>
+                <ion-select-option>Colima</ion-select-option>
+                <ion-select-option>Durango</ion-select-option>
+                <ion-select-option>Guanajuato</ion-select-option>
+                <ion-select-option>Guerrero</ion-select-option>
+                <ion-select-option>Hidalgo</ion-select-option>
+                <ion-select-option>Jalisco</ion-select-option>
+                <ion-select-option>Estado de México</ion-select-option>
+                <ion-select-option>Michoacán</ion-select-option>
+                <ion-select-option>Morelos</ion-select-option>
+                <ion-select-option>Nayarit</ion-select-option>
+                <ion-select-option>Nuevo León</ion-select-option>
+                <ion-select-option>Oaxaca</ion-select-option>
+                <ion-select-option>Puebla</ion-select-option>
+                <ion-select-option>Querétaro</ion-select-option>
+                <ion-select-option>Quintana Roo</ion-select-option>
+                <ion-select-option>San Luis Potosí</ion-select-option>
+                <ion-select-option>Sinaloa</ion-select-option>
+                <ion-select-option>Sonora</ion-select-option>
+                <ion-select-option>Tabasco</ion-select-option>
+                <ion-select-option>Tamaulipas</ion-select-option>
+                <ion-select-option>Tlaxcala</ion-select-option>
+                <ion-select-option>Veracruz</ion-select-option>
+                <ion-select-option>Yucatán</ion-select-option>
+                <ion-select-option>Zacatecas</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-label
+            >Indica el área laboral en la que actualmente te
+            desempeñas</ion-label
+          >
+        </ion-row>
+        <ion-list>
+          <ion-radio-group>
+            <ion-item>
+              <ion-label>Aeronautica</ion-label>
+              <ion-radio slot="start" value="Aeronautica"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Agroindustrial</ion-label>
+              <ion-radio slot="start" value="Agroindustrial"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Automotriz</ion-label>
+              <ion-radio slot="start" value="Automotriz"></ion-radio>
+            </ion-item>
 
+            <ion-item>
+              <ion-label>Energético</ion-label>
+              <ion-radio slot="start" value="Energético"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label
+                >Tecnologías de la Información o Sistemas
+                Computacionales</ion-label
+              >
+              <ion-radio slot="start" value="Sistemas"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ambiental</ion-label>
+              <ion-radio slot="start" value="Ambiental"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Administración de empresa u organizaciones</ion-label>
+              <ion-radio slot="start" value="Admin"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Industria de la construcción</ion-label>
+              <ion-radio slot="start" value="Contruccion"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Otro (especifique en texto)</ion-label>
+              <ion-radio slot="start" value="otro"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-textarea
+                id="txtAreaOtro"
+                placeholder="Escriba aquí su área de profesión"
+              ></ion-textarea>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <ion-row>
+          <ion-label
+            >Describe las funciones del trabajo que actualmente estás
+            desempeñando</ion-label
+          >
+        </ion-row>
+        <ion-row>
+          <ion-textarea
+            id="txtAreaTrabajoActual"
+            placeholder="Escriba aquí"
+          ></ion-textarea>
+        </ion-row>
+        <ion-row>
+          <ion-label
+            >En general,¿qué tan valorado(a) te sientes en tu trabajo por tu
+            desempeño laboral?
+          </ion-label>
+        </ion-row>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Extremadamente valorado(a)</ion-label>
+            <ion-radio
+              slot="start"
+              value="Extremadamente valorado(a)"
+            ></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Muy valorado(a)</ion-label>
+            <ion-radio slot="start" value="Muy valorado(a)"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Moderadamente valorado(a)</ion-label>
+            <ion-radio
+              slot="start"
+              value="Moderadamente valorado(a)"
+            ></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Poco valorado(a)</ion-label>
+            <ion-radio slot="start" value="Poco valorado(a)"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Nada valorado(a)</ion-label>
+            <ion-radio slot="start" value="Nada valorado(a)"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <!--Pregunta 9-->
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            Indica tu nivel de satisfacción respecto a las siguientes
+            competencias genéricas, considerando que efectivamente las
+            adquiriste a través de las asignaturas que se te ofertaron durante
+            tu formación profesional, en el Instituto Tecnológico del que
+            egresaste
+          </ion-label></ion-row
+        >
+        <ion-row>
+          <ion-grid class="empleadorGrid">
+            <ion-radio-group>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col><ion-text>Muy Insatisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Insatisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Moderadamente Satisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Satisfecho</ion-text></ion-col>
+                <ion-col><ion-text>Muy Satisfecho</ion-text></ion-col>
+              </ion-row>
+              <ion-radio-group formControlName="competenciagenerica">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Aplico los conocimientos generales de la carrera en la
+                      práctica del desempeño profesional
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciagenerica2">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Poseo la capacidad para diseñar, organizar, planificar y
+                      gestionar proyectos que permitan el desarrollo
+                      empresarial/Tecnológico
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciagenerica3">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Cuento con la capacidad de trabajar en equipo para el
+                      desarrollo de proyectos dentro de la empresa.
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciagenerica4">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Tomo decisiones de manera efectiva para mejorar procesos y
+                      aumentar la productividad en la empresa.
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciagenerica5">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Asumo compromiso ético con la sociedad en el desempeño de
+                      sus funciones.
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Insatisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="Moderadamente Satisfecho"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy Satisfecho"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+            </ion-radio-group>
+          </ion-grid>
+        </ion-row>
+
+        <!--Pregunta 10-->
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            Mi desempeño profesional cumple una función social. Para ello, las
+            siguientes competencias las desarrollé mientras estudiaba en el
+            tecnológico, durante mi formación profesional.
+          </ion-label></ion-row
+        >
+        <ion-row>
+          <ion-grid class="empleadorGrid">
+            <ion-radio-group>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col><ion-text>Muy en Desacuerdo</ion-text></ion-col>
+                <ion-col><ion-text>En Desacuerdo</ion-text></ion-col>
+                <ion-col><ion-text>Neutral</ion-text></ion-col>
+                <ion-col><ion-text>De acuerdo</ion-text></ion-col>
+                <ion-col><ion-text>Muy de acuerdo</ion-text></ion-col>
+              </ion-row>
+              <ion-radio-group formControlName="competenciadesarrollada1">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad de aplicar los conocimientos en la práctica para
+                      solucionar problemas en su desempeño profesional
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrollada2">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad de influir en otros a través del liderazgo
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrollada3">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Conocimiento de culturas y costumbres de otros países
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrollada4">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad de comunicarme con profesionales de otras áreas
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+            </ion-radio-group>
+          </ion-grid>
+        </ion-row>
+
+        <!--Pregunta 11-->
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            Durante mi estancia en el Tecnológico desarrollé las siguientes
+            competencias profesionales a lo largo de todo el plan de estudio,
+            por lo que actualmente me ayudan en mi desempeño profesional
+          </ion-label></ion-row
+        >
+        <ion-row>
+          <ion-grid class="empleadorGrid">
+            <ion-radio-group>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col><ion-text>Muy en Desacuerdo</ion-text></ion-col>
+                <ion-col><ion-text>En Desacuerdo</ion-text></ion-col>
+                <ion-col><ion-text>Neutral</ion-text></ion-col>
+                <ion-col><ion-text>De acuerdo</ion-text></ion-col>
+                <ion-col><ion-text>Muy de acuerdo</ion-text></ion-col>
+              </ion-row>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio1"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Conocimientos básicos de la carrera y del perfil de egreso
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio2"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Comunicación oral y escrita en su propia lengua
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio3"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad para comunicarte en una segunda lengua
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio4"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad para diseñar nuevos procesos, productos o
+                      servicios
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio5"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Habilidades básicas de manejo de la computadora y
+                      tecnologías de la información
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio6"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Habilidades de investigación para innovar y resolver
+                      problemas
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio7"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad para diseñar, organizar, planificar y gestionar
+                      proyectos
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group
+                formControlName="competenciadesarrolladaPlanEstudio8"
+              >
+                <ion-row>
+                  <ion-col>
+                    <ion-text> Iniciativa y espíritu emprendedor </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+            </ion-radio-group>
+          </ion-grid>
+        </ion-row>
+
+        <!--Pregunta 12-->
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            Las siguientes competencias corresponden a la función psicopedagógica de la carrera que estudié
+            y las estoy aplicando en mi desempeño profesional
+          </ion-label></ion-row
+        >
+        <ion-row>
+          <ion-grid class="empleadorGrid">
+            <ion-radio-group>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col><ion-text>Muy en Desacuerdo</ion-text></ion-col>
+                <ion-col><ion-text>En Desacuerdo</ion-text></ion-col>
+                <ion-col><ion-text>Neutral</ion-text></ion-col>
+                <ion-col><ion-text>De acuerdo</ion-text></ion-col>
+                <ion-col><ion-text>Muy de acuerdo</ion-text></ion-col>
+              </ion-row>
+              <ion-radio-group formControlName="competenciadesarrolladaPsicopedagogica1">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad de aprender a innovar y planificar procesos
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrolladaPsicopedagogica2">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Habilidad para buscar y analizar información proveniente de fuentes diversas
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrolladaPsicopedagogica3">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad de generar ideas creativas 
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrolladaPsicopedagogica4">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Habilidad para trabajar en forma autónoma
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrolladaPsicopedagogica5">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Habilidades interpersonales para fortalecer las relaciones humanas
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrolladaPsicopedagogica6">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Capacidad de trabajar en equipos interdisciplinarios
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+              <ion-radio-group formControlName="competenciadesarrolladaPsicopedagogica7">
+                <ion-row>
+                  <ion-col>
+                    <ion-text>
+                      Habilidad para trabajar bajo presión en un ambiente laboral diverso
+                    </ion-text>
+                  </ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy en Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col
+                    ><ion-radio value="En Desacuerdo"></ion-radio
+                  ></ion-col>
+                  <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+                  <ion-col><ion-radio value="De acuerdo"></ion-radio></ion-col>
+                  <ion-col
+                    ><ion-radio value="Muy de Acuerdo"></ion-radio
+                  ></ion-col>
+                </ion-row>
+              </ion-radio-group>
+            </ion-radio-group>
+          </ion-grid>
+        </ion-row>
+
+
+        
+
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            Según tu opinión, indícanos qué contenidos, conocimientos,
+            habilidades o actitudes consideras que faltó en la formación
+            profesional de tus empleados, o lo que debería agregar en los
+            programas de estudio de egresados que contratas y que les permitiría
+            mejorar su desempeño profesional. <br />
+            La información proporcionada es de carácter confidencial y será de
+            gran utilidad para la creación de un nuevo modelo educativo para el
+            Tecnológico Nacional de México.
+          </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-textarea placeholder="Escribir aquí"></ion-textarea>
+        </ion-row>
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            En general, califica el grado de pertinencia que tiene el modelo
+            educativo: Formación y desarrollo de competencias profesionales,
+            según el desempeño profesional de los egresados de un instituto
+            tecnológico.</ion-label
+          >
+        </ion-row>
+        <ion-grid>
+          <ion-radio-group>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col> <ion-text>Nada Pertinente</ion-text></ion-col>
+              <ion-col><ion-text>Poco Pertinente</ion-text></ion-col>
+              <ion-col><ion-text>Neutral</ion-text></ion-col>
+              <ion-col><ion-text>Pertinente</ion-text></ion-col>
+              <ion-col><ion-text>Muy Pertinente</ion-text></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col><ion-text>Grado de Pertinencia</ion-text></ion-col>
+              <ion-col><ion-radio value="Nada Pertinente"></ion-radio></ion-col>
+              <ion-col><ion-radio value="Poco Pertinente"></ion-radio></ion-col>
+              <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+              <ion-col><ion-radio value="Pertinente"></ion-radio></ion-col>
+              <ion-col><ion-radio value="Muy Pertinente"></ion-radio></ion-col>
+            </ion-row>
+          </ion-radio-group>
+        </ion-grid>
+        <ion-row>
+          <ion-label class="ion-text-wrap"
+            >En general, califica el grado de satisfacción que tienes sobre el
+            modelo educativo: Formación y desarrollo de competencias
+            profesionales, según el desempeño profesional de tu personal
+            egresado de un instituto tecnológico
+          </ion-label></ion-row
+        >
+        <ion-grid>
+          <ion-radio-group>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col><ion-text>Muy Insatisfecho</ion-text></ion-col>
+              <ion-col><ion-text>Insatisfecho</ion-text></ion-col>
+              <ion-col><ion-text>Neutral</ion-text></ion-col>
+              <ion-col><ion-text>Satisfecho</ion-text></ion-col>
+              <ion-col><ion-text>Muy Satisfecho</ion-text></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col><ion-text>Grado de Satisfaccion</ion-text></ion-col>
+              <ion-col
+                ><ion-radio value="Muy Insatisfecho"></ion-radio
+              ></ion-col>
+              <ion-col><ion-radio value="Insatisfecho"></ion-radio></ion-col>
+              <ion-col><ion-radio value="Neutral"></ion-radio></ion-col>
+              <ion-col><ion-radio value="Satisfecho"></ion-radio></ion-col>
+              <ion-col><ion-radio value="Muy Satisfecho"></ion-radio></ion-col>
+            </ion-row>
+          </ion-radio-group>
+        </ion-grid>
+
+        <ion-row>
+          <ion-label class="ion-text-wrap">
+            Según tu opinión, indica las fortalezas y habilidades que tienen los
+            egresados de un instituto tecnológico, que los hace competitivos y
+            confiables. <br />
+            Gracias por tu colaboración.
+          </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-textarea placeholder="Escribir aquí"></ion-textarea>
+        </ion-row>
+        <ion-row class="formItem">
+          <ion-button expand="block" fill="outline" size="large"
+            >Entregar Encuesta
+          </ion-button>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-item>
 </ion-content>
