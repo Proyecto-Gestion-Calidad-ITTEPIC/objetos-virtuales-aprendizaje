@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyCAVpkd5yRyMCy1FlqCTxiTz8wFFbIcVZU",
-    authDomain: "residenciadb-87a41.firebaseapp.com",
-    projectId: "residenciadb-87a41",
-    storageBucket: "residenciadb-87a41.appspot.com",
-    messagingSenderId: "979817786015",
-    appId: "1:979817786015:web:b2fcee5977ad775ffdd0aa",
-    measurementId: "G-E0QH4E2E4T"
+    apiKey: "AIzaSyBMASeFRhaGW8DfsovdTXbu8x7B52j-ot8",
+    authDomain: "proyecto-gestion-calidad.firebaseapp.com",
+    projectId: "proyecto-gestion-calidad",
+    storageBucket: "proyecto-gestion-calidad.appspot.com",
+    messagingSenderId: "1018977263798",
+    appId: "1:1018977263798:web:d63d781cb49e32a8e28617",
+    measurementId: "G-SH8HV82LFS"
+
   }
 };
 
